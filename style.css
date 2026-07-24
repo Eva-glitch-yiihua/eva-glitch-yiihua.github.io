@@ -252,4 +252,52 @@
       nav { flex-wrap: wrap; justify-content: center; }
       .container { grid-template-columns: 1fr; }
     }
+    /* 下拉選單外層容器 */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    /* 下拉選單本體（預設隱藏） */
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%; /* 出現在按鈕正下方 */
+        left: 0;
+        min-width: 160px;
+        background-color: #ffffff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        border-radius: 6px;
+        padding: 8px 0;
+        z-index: 1000;
+        border: 1px solid #e1e8ed;
+    }
+
+    /* 下拉選單內的子連結 */
+    .dropdown-menu a {
+        color: #333333;
+        padding: 10px 16px;
+        text-decoration: none;
+        display: block;
+        font-size: 14px;
+        white-space: nowrap;
+        transition: background-color 0.2s, color 0.2s;
+    }
+
+    /* 當滑鼠移入下拉子項目時 */
+    .dropdown-menu a:hover {
+        background-color: #eaf2f8; /* 淺藍色高亮 */
+        color: #0066cc;
+    }
+
+    /* 核心魔法：滑鼠移入 .dropdown 容器時，顯示下拉選單 */
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+
+    /* 滑鼠懸停時箭頭稍微旋轉（增添視覺質感） */
+    .dropdown:hover .fa-angle-down {
+        transform: rotate(180deg);
+        transition: transform 0.3s;
+    }
 </style>
