@@ -7,6 +7,7 @@
   <!-- 引入 FontAwesome 圖示庫 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
+  
   <style>
     /* 全局樣式重置 */
     * {
@@ -289,8 +290,10 @@
   </style>
 </head>
 <body>
-
   <!-- 1. Header 頁首導覽 -->
+  <div id="header-container"></div>
+<!-- 
+  
   <header>
     <div class="logo-container">
       <i class="fa-solid fa-stamp" style="font-size: 30px; color: #a83232;"></i>
@@ -313,7 +316,7 @@
         <i class="fa-regular fa-envelope"></i>
       </div>
     </nav>
-  </header>
+  </header> -->
 
   <!-- 2. Hero Banner 與橫幅標題 -->
   <section class="hero-banner">
@@ -405,52 +408,8 @@
     <a href="#" class="social-btn btn-phone"><i class="fa-solid fa-phone"></i></a>
     <a href="#" class="social-btn btn-msg"><i class="fa-brands fa-facebook-messenger"></i></a>
   </div>
-
-  <!-- 網站頁尾 (Footer) 開始 -->
-  <footer style="background-color: #444444; color: #ffffff; padding: 40px 20px; font-family: sans-serif;">
-    <div style="max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px;">
-      
-      <!-- 第一欄：關於公證人 -->
-      <div style="flex: 1; min-width: 250px;">
-        <h3 style="color: #ffffff; font-size: 18px; margin-bottom: 15px; border-bottom: 1px solid #666; padding-bottom: 8px;">關於公證人</h3>
-        <p style="margin: 8px 0; color: #ddd; line-height: 1.6;">臺灣高雄地方法院所屬公證人</p>
-        <p style="margin: 8px 0; color: #ddd; line-height: 1.6;">The Trinity Notary Public Office</p>
-        <p style="margin-top: 15px;">
-          <a href="#" target="_blank" rel="noopener noreferrer" style="color: #ffffff; text-decoration: underline;">詳細資訊</a>
-        </p>
-      </div>
-
-      <!-- 第二欄：歡迎預約諮詢 -->
-      <div style="flex: 1; min-width: 250px;">
-        <h3 style="color: #ffffff; font-size: 18px; margin-bottom: 15px; border-bottom: 1px solid #666; padding-bottom: 8px;">歡迎預約諮詢</h3>
-        <ul style="list-style-type: disc; padding-left: 20px; margin: 0; color: #ddd; line-height: 1.8;">
-          <li>電話：(07)313-1234</li>
-          <li>傳真：(07)322-9888</li>
-          <li>E-mail：<a href="mailto:whatislaw@gmail.com" style="color: #ffffff; text-decoration: underline;">whatislaw@gmail.com</a></li>
-          <li>LINE ID：<span style="background-color: #70e000; color: #000; padding: 2px 6px; border-radius: 3px; font-weight: bold;">@notary</span></li>
-        </ul>
-        <p style="margin-top: 15px;">
-          <a href="https://line.me/R/ti/p/@notary" target="_blank" rel="noopener noreferrer" style="color: #ffffff; text-decoration: underline;">更多聯絡方式 (LINE加好友)</a>
-        </p>
-      </div>
-
-      <!-- 第三欄：本所交通便利 -->
-      <div style="flex: 1; min-width: 250px;">
-        <h3 style="color: #ffffff; font-size: 18px; margin-bottom: 15px; border-bottom: 1px solid #666; padding-bottom: 8px;">本所交通便利</h3>
-        <p style="margin: 8px 0; color: #ddd; line-height: 1.6;">後驛捷運站 2 號出口旁</p>
-        <p style="margin: 8px 0; color: #ddd; line-height: 1.6;">807 高雄市博愛一路200號1樓</p>
-        <p style="margin: 8px 0; color: #bbb; font-size: 14px;">(周一至周五 9:00-17:00 中午不休息)</p>
-        <p style="margin-top: 15px;">
-          <a href="https://www.google.com/maps/search/?api=1&query=高雄市博愛一路200號" target="_blank" rel="noopener noreferrer" style="color: #ffffff; text-decoration: underline;">
-            交通/停車示意圖
-          </a>
-        </p>
-      </div>
-
-    </div>
-  </footer>
-  <!-- 網站頁尾 (Footer) 結束 -->
-
+  <div id="footer-container"></div>
+  
   <!-- JavaScript 點擊放大圖片邏輯 -->
   <script>
     function openModal(cardElement) {
@@ -465,6 +424,21 @@
       document.getElementById('imgModal').style.display = 'none';
     }
   </script>
+  <script>
+      // 載入 Header
+      fetch('header.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('header-container').innerHTML = data;
+        });
+
+      // 載入 Footer
+      fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('footer-container').innerHTML = data;
+        });
+    </script>
 
 </body>
 </html>
