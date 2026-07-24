@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>收費標準 - 民間公證人 三民公證所</title>
+  <!-- 引入 FontAwesome 圖示庫 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    /* 全局樣式重置 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+    }
+
+    body {
+      background-color: #fdfaf7;
+      color: #333;
+    }
+
+    /* 1. 頂部導覽列 (Header) */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 50px;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-img {
+      height: 45px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-size: 15px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover, nav a.active {
+      color: #a83232;
+    }
+
+    .header-icons {
+      display: flex;
+      gap: 12px;
+      margin-left: 10px;
+      font-size: 18px;
+      color: #555;
+    }
+
+    /* 2. Hero Banner 區塊 */
+    .hero-banner {
+      position: relative;
+      width: 100%;
+      height: 260px;
+      background: linear-gradient(rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.25)), 
+                  url('https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-title {
+      font-size: 32px;
+      color: #222;
+      letter-spacing: 4px;
+      text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8);
+      font-weight: 600;
+    }
+
+    /* 麵包屑導航 */
+    .breadcrumb-container {
+      max-width: 1200px;
+      margin: 15px auto;
+      padding: 0 20px;
+      text-align: right;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .breadcrumb-container a {
+      color: #666;
+      text-decoration: none;
+    }
+
+    .breadcrumb-container a:hover {
+      text-decoration: underline;
+    }
+
+    /* 3. 主要內容區域 - 四張圖片網格展示 */
+    .container {
+      max-width: 1200px;
+      margin: 20px auto 60px;
+      padding: 0 20px;
+    }
+
+    .section-intro {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .section-intro h2 {
+      font-size: 24px;
+      color: #a83232;
+      margin-bottom: 10px;
+    }
+
+    .section-intro p {
+      font-size: 15px;
+      color: #666;
+    }
+
+    /* 圖片網格 (2x2) */
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+
+    .image-card {
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      border: 1px solid #eaeaea;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+
+    .image-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+
+    .card-img-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 75%; /* 4:3 高寬比 */
+      overflow: hidden;
+      background-color: #f5f5f5;
+    }
+
+    .card-img-wrapper img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .image-card:hover .card-img-wrapper img {
+      transform: scale(1.03);
+    }
+
+    .img-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      color: #fff;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .image-card:hover .img-overlay {
+      opacity: 1;
+    }
+
+    .card-info {
+      padding: 15px 20px;
+      border-top: 1px solid #f0f0f0;
+    }
+
+    .card-info h3 {
+      font-size: 18px;
+      color: #333;
+      margin-bottom: 5px;
+    }
+
+    .card-info p {
+      font-size: 13px;
+      color: #777;
+    }
+
+    /* 4. 點擊放大彈窗 (Modal) */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.85);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      max-width: 90%;
+      max-height: 90vh;
+      border-radius: 4px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .close-modal:hover {
+      color: #a83232;
+    }
+
+    /* 5. 右下角懸浮社群按鈕 */
+    .floating-socials {
+      position: fixed;
+      right: 20px;
+      bottom: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 1000;
+    }
+
+    .social-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 22px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+
+    .social-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .btn-fb { background-color: #3b5998; }
+    .btn-line { background-color: #06c755; }
+    .btn-phone { background-color: #f37023; }
+    .btn-msg { background-color: #0084ff; }
+
+    /* 響應式調整 */
+    @media (max-width: 768px) {
+      header { padding: 15px 20px; flex-direction: column; gap: 15px; }
+      nav { flex-wrap: wrap; justify-content: center; }
+      .image-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. Header 頁首導覽 -->
+  <header>
+    <div class="logo-container">
+      <i class="fa-solid fa-stamp" style="font-size: 30px; color: #a83232;"></i>
+      <div>
+        <span style="font-size: 12px; color: #888; display: block;">民間公證人</span>
+        <strong style="font-size: 20px; color: #222;">三民公證</strong>
+      </div>
+    </div>
+
+    <nav>
+      <a href="#">本所簡介 <i class="fa-solid fa-angle-down" style="font-size: 12px;"></i></a>
+      <a href="#">公證項目</a>
+      <a href="#">應備文件 <i class="fa-solid fa-angle-down" style="font-size: 12px;"></i></a>
+      <a href="#" class="active">費用標準</a>
+      <a href="#">範本下載</a>
+      <a href="#">最新消息</a>
+      <a href="contact.html">聯絡我們</a>
+      <div class="header-icons">
+        <i class="fa-brands fa-whatsapp"></i>
+        <i class="fa-regular fa-envelope"></i>
+      </div>
+    </nav>
+  </header>
+
+  <!-- 2. Hero Banner 與橫幅標題 -->
+  <section class="hero-banner">
+    <h1 class="hero-title">收費標準</h1>
+  </section>
+
+  <!-- 麵包屑導航 (Breadcrumb) -->
+  <div class="breadcrumb-container">
+    <a href="#">首頁</a> &gt; <span>收費標準</span>
+  </div>
+
+  <!-- 3. 主要內容區域（四張圖片網格） -->
+  <main class="container">
+    <div class="section-intro">
+      <h2>公證與認證費用標準表</h2>
+      <p>本所收費完全依照司法院法定「公證費用標準表」收取，費用與法院公證處完全一致。</p>
+    </div>
+
+    <div class="image-grid">
+      <!-- 圖片卡片 1 -->
+      <div class="image-card" onclick="openModal(this)">
+        <div class="card-img-wrapper">
+          <!-- 請將 src 替換為您的實際圖片網址或檔案路徑 -->
+          <img src="https://images.unsplash.com/photo-1450133064473-71024230f91b?q=80&w=800&auto=format&fit=crop" alt="公證費用標準表（中文/強制執行）">
+          <div class="img-overlay">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>&nbsp;點擊放大觀看
+          </div>
+        </div>
+        <div class="card-info">
+          <h3>一、公證費用標準表</h3>
+          <p>按標的金額/價額級距計算之公證與強制執行費用</p>
+        </div>
+      </div>
+
+      <!-- 圖片卡片 2 -->
+      <div class="image-card" onclick="openModal(this)">
+        <div class="card-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop" alt="租賃與借貸公證費用說明">
+          <div class="img-overlay">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>&nbsp;點擊放大觀看
+          </div>
+        </div>
+        <div class="card-info">
+          <h3>二、租賃與借貸契約試算說明</h3>
+          <p>包含總租金加押金計算範例與課稅現值對照</p>
+        </div>
+      </div>
+
+      <!-- 圖片卡片 3 -->
+      <div class="image-card" onclick="openModal(this)">
+        <div class="card-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=800&auto=format&fit=crop" alt="文書認證與翻譯計費標準">
+          <div class="img-overlay">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>&nbsp;點擊放大觀看
+          </div>
+        </div>
+        <div class="card-info">
+          <h3>三、文書認證與翻譯計費</h3>
+          <p>單國/外文文書認證及授權書費用標準</p>
+        </div>
+      </div>
+
+      <!-- 圖片卡片 4 -->
+      <div class="image-card" onclick="openModal(this)">
+        <div class="card-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=800&auto=format&fit=crop" alt="法定其他費用與出場體驗費">
+          <div class="img-overlay">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>&nbsp;點擊放大觀看
+          </div>
+        </div>
+        <div class="card-info">
+          <h3>四、法定其他費用與加收項目</h3>
+          <p>包含出場體驗費、假日辦理與超張費說明</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 圖片放大預覽彈窗 -->
+  <div id="imgModal" class="modal" onclick="closeModal()">
+    <span class="close-modal">&times;</span>
+    <img class="modal-content" id="modalImage">
+  </div>
+
+  <!-- 4. 右下角懸浮按鈕區塊 -->
+  <div class="floating-socials">
+    <a href="#" class="social-btn btn-fb"><i class="fa-brands fa-facebook-f"></i></a>
+    <a href="#" class="social-btn btn-line"><i class="fa-brands fa-line"></i></a>
+    <a href="#" class="social-btn btn-phone"><i class="fa-solid fa-phone"></i></a>
+    <a href="#" class="social-btn btn-msg"><i class="fa-brands fa-facebook-messenger"></i></a>
+  </div>
+
+  <!-- 網站頁尾 (Footer) 開始 -->
+  <footer style="background-color: #444444; color: #ffffff; padding: 40px 20px; font-family: sans-serif;">
+    <div style="max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px;">
+      
+      <!-- 第一欄：關於公證人 -->
+      <div style="flex: 1; min-width: 250px;">
+        <h3 style="color: #ffffff; font-size: 18px; margin-bottom: 15px; border-bottom: 1px solid #666; padding-bottom: 8px;">關於公證人</h3>
+        <p style="margin: 8px 0; color: #ddd; line-height: 1.6;">臺灣高雄地方法院所屬公證人</p>
+        <p style="margin: 8px 0; color: #ddd; line-height: 1.6;">The Trinity Notary Public Office</p>
+        <p style="margin-top: 15px;">
+          <a href="#" target="_blank" rel="noopener noreferrer" style="color: #ffffff; text-decoration: underline;">詳細資訊</a>
+        </p>
+      </div>
+
+      <!-- 第二欄：歡迎預約諮詢 -->
+      <div style="flex: 1; min-width: 250px;">
+        <h3 style="color: #ffffff; font-size: 18px; margin-bottom: 15px; border-bottom: 1px solid #666; padding-bottom: 8px;">歡迎預約諮詢</h3>
+        <ul style="list-style-type: disc; padding-left: 20px; margin: 0; color: #ddd; line-height: 1.8;">
+          <li>電話：(07)313-1234</li>
+          <li>傳真：(07)322-9888</li>
+          <li>E-mail：<a href="mailto:whatislaw@gmail.com" style="color: #ffffff; text-decoration: underline;">whatislaw@gmail.com</a></li>
+          <li>LINE ID：<span style="background-color: #70e000; color: #000; padding: 2px 6px; border-radius: 3px; font-weight: bold;">@notary</span></li>
+        </ul>
+        <p style="margin-top: 15px;">
+          <a href="https://line.me/R/ti/p/@notary" target="_blank" rel="noopener noreferrer" style="color: #ffffff; text-decoration: underline;">更多聯絡方式 (LINE加好友)</a>
+        </p>
+      </div>
+
+      <!-- 第三欄：本所交通便利 -->
+      <div style="flex: 1; min-width: 250px;">
+        <h3 style="color: #ffffff; font-size: 18px; margin-bottom: 15px; border-bottom: 1px solid #666; padding-bottom: 8px;">本所交通便利</h3>
+        <p style="margin: 8px 0; color: #ddd; line-height: 1.6;">後驛捷運站 2 號出口旁</p>
+        <p style="margin: 8px 0; color: #ddd; line-height: 1.6;">807 高雄市博愛一路200號1樓</p>
+        <p style="margin: 8px 0; color: #bbb; font-size: 14px;">(周一至周五 9:00-17:00 中午不休息)</p>
+        <p style="margin-top: 15px;">
+          <a href="https://www.google.com/maps/search/?api=1&query=高雄市博愛一路200號" target="_blank" rel="noopener noreferrer" style="color: #ffffff; text-decoration: underline;">
+            交通/停車示意圖
+          </a>
+        </p>
+      </div>
+
+    </div>
+  </footer>
+  <!-- 網站頁尾 (Footer) 結束 -->
+
+  <!-- JavaScript 點擊放大圖片邏輯 -->
+  <script>
+    function openModal(cardElement) {
+      const imgSrc = cardElement.querySelector('img').src;
+      const modal = document.getElementById('imgModal');
+      const modalImg = document.getElementById('modalImage');
+      modal.style.display = 'flex';
+      modalImg.src = imgSrc;
+    }
+
+    function closeModal() {
+      document.getElementById('imgModal').style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>
