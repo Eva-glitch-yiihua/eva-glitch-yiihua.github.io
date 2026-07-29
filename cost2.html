@@ -7,7 +7,6 @@
   <!-- 引入 FontAwesome 圖示庫 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
-  
   <style>
     /* 全局樣式重置 */
     * {
@@ -107,7 +106,7 @@
       text-decoration: underline;
     }
 
-    /* 3. 主要內容區域 - 四張圖片網格展示 */
+    /* 3. 主要內容區域 - 修改為單欄滿版直排 */
     .container {
       max-width: 1200px;
       margin: 20px auto 60px;
@@ -130,11 +129,11 @@
       color: #666;
     }
 
-    /* 圖片網格 (2x2) */
+    /* 單欄直排容器 */
     .image-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 25px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px; /* 圖片卡片之間的間距 */
     }
 
     .image-card {
@@ -145,33 +144,25 @@
       border: 1px solid #eaeaea;
       transition: transform 0.3s, box-shadow 0.3s;
       cursor: pointer;
+      width: 100%;
     }
 
     .image-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-3px);
       box-shadow: 0 8px 20px rgba(0,0,0,0.12);
     }
 
+    /* 取消原本的 4:3 限制，讓圖片依據原比例自然延伸完整顯示 */
     .card-img-wrapper {
       position: relative;
       width: 100%;
-      padding-top: 75%; /* 4:3 高寬比 */
-      overflow: hidden;
       background-color: #f5f5f5;
     }
 
     .card-img-wrapper img {
-      position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-
-    .image-card:hover .card-img-wrapper img {
-      transform: scale(1.03);
+      height: auto;
+      display: block;
     }
 
     .img-overlay {
@@ -180,7 +171,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.3);
+      background: rgba(0,0,0,0.2);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -196,19 +187,20 @@
     }
 
     .card-info {
-      padding: 15px 20px;
+      padding: 20px;
       border-top: 1px solid #f0f0f0;
+      background-color: #fff;
     }
 
     .card-info h3 {
-      font-size: 18px;
+      font-size: 20px;
       color: #333;
-      margin-bottom: 5px;
+      margin-bottom: 6px;
     }
 
     .card-info p {
-      font-size: 13px;
-      color: #777;
+      font-size: 14px;
+      color: #666;
     }
 
     /* 4. 點擊放大彈窗 (Modal) */
@@ -281,60 +273,57 @@
     .btn-phone { background-color: #f37023; }
     .btn-msg { background-color: #0084ff; }
 
+    /* 下拉選單外層容器 */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    /* 下拉選單本體 */
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 160px;
+      background-color: #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+      border-radius: 6px;
+      padding: 8px 0;
+      z-index: 1000;
+      border: 1px solid #e1e8ed;
+    }
+
+    .dropdown-menu a {
+      color: #333333;
+      padding: 10px 16px;
+      text-decoration: none;
+      display: block;
+      font-size: 14px;
+      white-space: nowrap;
+      transition: background-color 0.2s, color 0.2s;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: #eaf2f8;
+      color: #0066cc;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown:hover .fa-angle-down {
+      transform: rotate(180deg);
+      transition: transform 0.3s;
+    }
+
     /* 響應式調整 */
     @media (max-width: 768px) {
       header { padding: 15px 20px; flex-direction: column; gap: 15px; }
       nav { flex-wrap: wrap; justify-content: center; }
-      .image-grid { grid-template-columns: 1fr; }
-      /* 下拉選單外層容器 */
-    .dropdown {
-        position: relative;
-        display: inline-block;
+      .container { padding: 0 15px; }
     }
-
-    /* 下拉選單本體（預設隱藏） */
-    .dropdown-menu {
-        display: none;
-        position: absolute;
-        top: 100%; /* 出現在按鈕正下方 */
-        left: 0;
-        min-width: 160px;
-        background-color: #ffffff;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-        border-radius: 6px;
-        padding: 8px 0;
-        z-index: 1000;
-        border: 1px solid #e1e8ed;
-    }
-
-    /* 下拉選單內的子連結 */
-    .dropdown-menu a {
-        color: #333333;
-        padding: 10px 16px;
-        text-decoration: none;
-        display: block;
-        font-size: 14px;
-        white-space: nowrap;
-        transition: background-color 0.2s, color 0.2s;
-    }
-
-    /* 當滑鼠移入下拉子項目時 */
-    .dropdown-menu a:hover {
-        background-color: #eaf2f8; /* 淺藍色高亮 */
-        color: #0066cc;
-    }
-
-    /* 核心魔法：滑鼠移入 .dropdown 容器時，顯示下拉選單 */
-    .dropdown:hover .dropdown-menu {
-        display: block;
-    }
-
-    /* 滑鼠懸停時箭頭稍微旋轉（增添視覺質感） */
-    .dropdown:hover .fa-angle-down {
-        transform: rotate(180deg);
-        transition: transform 0.3s;
-    }
-    
   </style>
 </head>
 <body>
@@ -351,7 +340,7 @@
     <a href="home.html">首頁</a> &gt; <span>收費標準</span>
   </div>
 
-  <!-- 3. 主要內容區域（四張圖片網格） -->
+  <!-- 3. 主要內容區域（單欄直排圖片） -->
   <main class="container">
     <div class="section-intro">
       <h2>公證與認證費用標準表</h2>
@@ -362,7 +351,6 @@
       <!-- 圖片卡片 1 -->
       <div class="image-card" onclick="openModal(this)">
         <div class="card-img-wrapper">
-          <!-- 請將 src 替換為您的實際圖片網址或檔案路徑 -->
           <img src="p/c1.webp" alt="公證費用標準表（中文/強制執行）">
           <div class="img-overlay">
             <i class="fa-solid fa-magnifying-glass-plus"></i>&nbsp;點擊放大觀看
@@ -447,20 +435,20 @@
       document.getElementById('imgModal').style.display = 'none';
     }
 
-      // 載入 Header
-      fetch('header.html')
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById('header-container').innerHTML = data;
-        });
+    // 載入 Header
+    fetch('header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('header-container').innerHTML = data;
+      });
 
-      // 載入 Footer
-      fetch('footer.html')
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById('footer-container').innerHTML = data;
-        });
-    </script>
+    // 載入 Footer
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-container').innerHTML = data;
+      });
+  </script>
 
-  </body>
+</body>
 </html>
