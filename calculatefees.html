@@ -3,40 +3,134 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>房屋租約 - 公證費線上試算</title>
+  <title>房屋租約公證費試算 - 民間公證人 三民公證所</title>
+  <!-- 引入 FontAwesome 圖示庫 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <style>
+    /* 全局樣式重置 */
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
       font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
     }
 
     body {
-      background-color: #f8f9fa;
+      background-color: #fdfaf7;
       color: #333;
-      padding: 40px 20px;
+    }
+
+    /* 1. 頂部導覽列 (Header) */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 50px;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-img {
+      height: 45px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-size: 15px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover, nav a.active {
+      color: #0066cc;
+    }
+
+    .header-icons {
+      display: flex;
+      gap: 12px;
+      margin-left: 10px;
+      font-size: 18px;
+      color: #555;
+    }
+
+    /* 2. Hero Banner 區塊 */
+    .hero-banner {
+      position: relative;
+      width: 100%;
+      height: 260px;
+      background: linear-gradient(rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.25)), 
+                  url('https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-title {
+      font-size: 32px;
+      color: #222;
+      letter-spacing: 4px;
+      text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8);
+      font-weight: 600;
+    }
+
+    /* 麵包屑導航 */
+    .breadcrumb-container {
+      max-width: 1200px;
+      margin: 15px auto;
+      padding: 0 20px;
+      text-align: right;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .breadcrumb-container a {
+      color: #666;
+      text-decoration: none;
+    }
+
+    .breadcrumb-container a:hover {
+      text-decoration: underline;
+    }
+
+    /* 3. 主要試算器內容區塊 */
+    .container {
+      max-width: 800px;
+      margin: 20px auto 60px;
+      padding: 0 20px;
     }
 
     .calc-card {
-      max-width: 650px;
-      margin: 0 auto;
       background: #ffffff;
-      padding: 30px;
+      padding: 35px;
       border-radius: 12px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      border: 1px solid #eaeaea;
     }
 
-    h2 {
+    .calc-card h2 {
       font-size: 24px;
       color: #0066cc;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
       border-bottom: 2px solid #0066cc;
       padding-bottom: 10px;
     }
 
     .calc-form .form-group {
-      margin-bottom: 20px;
+      margin-bottom: 22px;
     }
 
     .form-group label {
@@ -114,7 +208,7 @@
     /* 結果顯示區 */
     .result-box {
       margin-top: 25px;
-      padding: 20px;
+      padding: 20px 25px;
       background-color: #f0f7ff;
       border-left: 5px solid #0066cc;
       border-radius: 4px;
@@ -128,7 +222,7 @@
     .result-row {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       font-size: 15px;
     }
 
@@ -137,117 +231,228 @@
       font-weight: bold;
       color: #d9534f;
       border-top: 1px dashed #bbb;
-      padding-top: 12px;
-      margin-top: 10px;
+      padding-top: 14px;
+      margin-top: 12px;
+    }
+
+    /* 4. 下拉選單與懸浮按鈕 */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 160px;
+      background-color: #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+      border-radius: 6px;
+      padding: 8px 0;
+      z-index: 1000;
+      border: 1px solid #e1e8ed;
+    }
+
+    .dropdown-menu a {
+      color: #333333;
+      padding: 10px 16px;
+      text-decoration: none;
+      display: block;
+      font-size: 14px;
+      white-space: nowrap;
+      transition: background-color 0.2s, color 0.2s;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: #eaf2f8;
+      color: #0066cc;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown:hover .fa-angle-down {
+      transform: rotate(180deg);
+      transition: transform 0.3s;
+    }
+
+    .floating-socials {
+      position: fixed;
+      right: 20px;
+      bottom: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 1000;
+    }
+
+    .social-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 22px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+
+    .social-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .btn-fb { background-color: #3b5998; }
+    .btn-line { background-color: #06c755; }
+    .btn-phone { background-color: #f37023; }
+    .btn-msg { background-color: #0084ff; }
+
+    /* 響應式調整 */
+    @media (max-width: 768px) {
+      header { padding: 15px 20px; flex-direction: column; gap: 15px; }
+      nav { flex-wrap: wrap; justify-content: center; }
+      .container { padding: 0 15px; }
+      .calc-card { padding: 20px; }
     }
   </style>
 </head>
 <body>
+  <!-- 1. Header 頁首導覽 -->
+  <div id="header-container"></div>
 
-  <div class="calc-card">
-    <h2>房屋租約 — 公證費試算</h2>
+  <!-- 2. Hero Banner 與橫幅標題 -->
+  <section class="hero-banner">
+    <h1 class="hero-title">房屋租約公證費試算</h1>
+  </section>
 
-    <div class="calc-form">
-      <!-- 月租金 -->
-      <div class="form-group">
-        <label for="monthlyRent">月租金：</label>
-        <div class="input-row">
-          <input type="number" id="monthlyRent" placeholder="請輸入月租金" oninput="autoCalcTotalRent()">
-          <span class="unit">元</span>
-        </div>
-      </div>
-
-      <!-- 租期 -->
-      <div class="form-group">
-        <label>租期：</label>
-        <div class="input-row">
-          <input type="number" id="rentYears" value="1" min="0" oninput="autoCalcTotalRent()">
-          <span class="unit">年</span>
-          <input type="number" id="rentMonths" value="0" min="0" max="11" oninput="autoCalcTotalRent()">
-          <span class="unit">個月</span>
-        </div>
-        <p class="note">填寫說明：若租期為 3 年，請填 3 年 0 個月。</p>
-      </div>
-
-      <!-- 租金總額 -->
-      <div class="form-group">
-        <label for="totalRent">租金總額：</label>
-        <div class="input-row">
-          <input type="number" id="totalRent" placeholder="自動計算或自行填寫">
-          <span class="unit">元</span>
-        </div>
-      </div>
-
-      <!-- 押金 -->
-      <div class="form-group">
-        <label for="deposit">押金：</label>
-        <div class="input-row">
-          <input type="number" id="deposit" placeholder="請輸入押金金額" value="0">
-          <span class="unit">元</span>
-        </div>
-      </div>
-
-      <!-- 房屋課稅現值 -->
-      <div class="form-group">
-        <label for="taxValue">房屋課稅現值：</label>
-        <div class="input-row">
-          <input type="number" id="taxValue" placeholder="若無可不填" value="0">
-          <span class="unit">元</span>
-        </div>
-        <p class="note">(請參考最新一期房屋稅稅單或房屋稅籍證明書的「房屋課稅現值」)</p>
-      </div>
-
-      <!-- 是否約定強制執行 -->
-      <div class="form-group">
-        <label>是否約定「附加逕受強制執行」？</label>
-        <div class="radio-group">
-          <label class="radio-label"><input type="radio" name="execution" value="yes" checked> 是 (費用加收 50%)</label>
-          <label class="radio-label"><input type="radio" name="execution" value="no"> 否</label>
-        </div>
-      </div>
-
-      <!-- 夜間/假日辦理 -->
-      <div class="form-group">
-        <label>是否於假日或夜間辦理公證？</label>
-        <div class="radio-group">
-          <label class="radio-label"><input type="radio" name="holiday" value="yes"> 是</label>
-          <label class="radio-label"><input type="radio" name="holiday" value="no" checked> 否</label>
-        </div>
-        <p class="note">*說明：夜間 (17:30以後) 或例假日辦理，費用加收50% (加收部分上限最高為 5,000 元)。</p>
-      </div>
-
-      <button class="btn-calc" onclick="calculateFee()">開始試算公證費</button>
-    </div>
-
-    <!-- 試算結果顯示區 -->
-    <div class="result-box" id="resultBox">
-      <div class="result-row">
-        <span>計算標準一（租金總額 + 押金）：</span>
-        <strong id="resStd1">0 元</strong>
-      </div>
-      <div class="result-row">
-        <span>計算標準二（課稅現值 + 押金）：</span>
-        <strong id="resStd2">0 元</strong>
-      </div>
-      <div class="result-row">
-        <span>採計之標的金額（取高者）：</span>
-        <strong id="resFinalTarget" style="color: #0066cc;">0 元</strong>
-      </div>
-      <div class="result-row">
-        <span>基本公證費用：</span>
-        <strong id="resBaseFee">0 元</strong>
-      </div>
-      <div class="result-row" id="holidayFeeRow" style="display:none;">
-        <span>夜間/假日加收費用：</span>
-        <strong id="resHolidayFee">0 元</strong>
-      </div>
-      <div class="result-row result-total">
-        <span>預估總公證費用：</span>
-        <span id="resTotalFee">0 元</span>
-      </div>
-    </div>
+  <!-- 麵包屑導航 (Breadcrumb) -->
+  <div class="breadcrumb-container">
+    <a href="home.html">首頁</a> &gt; <span>公證費試算</span>
   </div>
 
+  <!-- 3. 主要內容區域 (線上試算器) -->
+  <main class="container">
+    <div class="calc-card">
+      <h2>房屋租約 — 公證費線上試算</h2>
+
+      <div class="calc-form">
+        <!-- 月租金 -->
+        <div class="form-group">
+          <label for="monthlyRent">月租金：</label>
+          <div class="input-row">
+            <input type="number" id="monthlyRent" placeholder="請輸入月租金" oninput="autoCalcTotalRent()">
+            <span class="unit">元</span>
+          </div>
+        </div>
+
+        <!-- 租期 -->
+        <div class="form-group">
+          <label>租期：</label>
+          <div class="input-row">
+            <input type="number" id="rentYears" value="1" min="0" oninput="autoCalcTotalRent()">
+            <span class="unit">年</span>
+            <input type="number" id="rentMonths" value="0" min="0" max="11" oninput="autoCalcTotalRent()">
+            <span class="unit">個月</span>
+          </div>
+          <p class="note">填寫說明：若租期為 3 年，請填 3 年 0 個月。</p>
+        </div>
+
+        <!-- 租金總額 -->
+        <div class="form-group">
+          <label for="totalRent">租金總額：</label>
+          <div class="input-row">
+            <input type="number" id="totalRent" placeholder="自動計算或自行填寫">
+            <span class="unit">元</span>
+          </div>
+        </div>
+
+        <!-- 押金 -->
+        <div class="form-group">
+          <label for="deposit">押金：</label>
+          <div class="input-row">
+            <input type="number" id="deposit" placeholder="請輸入押金金額" value="0">
+            <span class="unit">元</span>
+          </div>
+        </div>
+
+        <!-- 房屋課稅現值 -->
+        <div class="form-group">
+          <label for="taxValue">房屋課稅現值：</label>
+          <div class="input-row">
+            <input type="number" id="taxValue" placeholder="若無可不填" value="0">
+            <span class="unit">元</span>
+          </div>
+          <p class="note">(請參考最新一期房屋稅稅單或房屋稅籍證明書的「房屋課稅現值」)</p>
+        </div>
+
+        <!-- 是否約定強制執行 -->
+        <div class="form-group">
+          <label>是否約定「附加逕受強制執行」？</label>
+          <div class="radio-group">
+            <label class="radio-label"><input type="radio" name="execution" value="yes" checked> 是 (費用加收 50%)</label>
+            <label class="radio-label"><input type="radio" name="execution" value="no"> 否</label>
+          </div>
+        </div>
+
+        <!-- 夜間/假日辦理 -->
+        <div class="form-group">
+          <label>是否於假日或夜間辦理公證？</label>
+          <div class="radio-group">
+            <label class="radio-label"><input type="radio" name="holiday" value="yes"> 是</label>
+            <label class="radio-label"><input type="radio" name="holiday" value="no" checked> 否</label>
+          </div>
+          <p class="note">*說明：夜間 (17:30以後) 或例假日辦理，費用加收50% (加收部分上限最高為 5,000 元)。</p>
+        </div>
+
+        <button class="btn-calc" onclick="calculateFee()">開始試算公證費</button>
+      </div>
+
+      <!-- 試算結果顯示區 -->
+      <div class="result-box" id="resultBox">
+        <div class="result-row">
+          <span>計算標準一（租金總額 + 押金）：</span>
+          <strong id="resStd1">0 元</strong>
+        </div>
+        <div class="result-row">
+          <span>計算標準二（課稅現值 + 押金）：</span>
+          <strong id="resStd2">0 元</strong>
+        </div>
+        <div class="result-row">
+          <span>採計之標的金額（取高者）：</span>
+          <strong id="resFinalTarget" style="color: #0066cc;">0 元</strong>
+        </div>
+        <div class="result-row">
+          <span>基本公證費用：</span>
+          <strong id="resBaseFee">0 元</strong>
+        </div>
+        <div class="result-row" id="holidayFeeRow" style="display:none;">
+          <span>夜間/假日加收費用：</span>
+          <strong id="resHolidayFee">0 元</strong>
+        </div>
+        <div class="result-row result-total">
+          <span>預估總公證費用：</span>
+          <span id="resTotalFee">0 元</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 4. 右下角懸浮按鈕區塊 -->
+  <div class="floating-socials">
+    <a href="#" class="social-btn btn-fb"><i class="fa-brands fa-facebook-f"></i></a>
+    <a href="#" class="social-btn btn-line"><i class="fa-brands fa-line"></i></a>
+    <a href="#" class="social-btn btn-phone"><i class="fa-solid fa-phone"></i></a>
+    <a href="#" class="social-btn btn-msg"><i class="fa-brands fa-facebook-messenger"></i></a>
+  </div>
+
+  <div id="footer-container"></div>
+  
+  <!-- JavaScript 邏輯區 -->
   <script>
     // 自動計算租金總額
     function autoCalcTotalRent() {
@@ -270,7 +475,6 @@
       if (amount <= 20000000) return 8000;
       if (amount <= 50000000) return 10000;
       
-      // 超過 5000 萬，每增加 1000 萬加收 1000 元
       const overAmount = amount - 50000000;
       const extraTenMillion = Math.ceil(overAmount / 10000000);
       return 10000 + (extraTenMillion * 1000);
@@ -327,6 +531,20 @@
       document.getElementById('resTotalFee').innerText = totalFee.toLocaleString() + ' 元';
       document.getElementById('resultBox').classList.add('active');
     }
+
+    // 載入 Header
+    fetch('header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('header-container').innerHTML = data;
+      });
+
+    // 載入 Footer
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-container').innerHTML = data;
+      });
   </script>
 </body>
 </html>
