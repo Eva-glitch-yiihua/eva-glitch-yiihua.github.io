@@ -9,35 +9,51 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <style>
-  .calc-card-wrapper {
-    max-width: 800px;
-    margin: 20px auto 60px;
-    padding: 0 20px;
-    font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
-    color: #333;
+  /* 1. 確保外層與 body 完全鋪滿，不留空白 */
+  html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* 防止橫向滾動條 */
   }
 
-  .calc-card-wrapper * {
+  /* 強制修正 container 為單欄滿版 */
+  .container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 20px auto 60px auto !important;
+    padding: 0 40px !important;
+    display: block !important; /* 防止被外部 style.css 的 flex 或 grid 影響拆成兩欄 */
     box-sizing: border-box;
   }
 
+  /* 3. 滿版卡片本體 */
   .calc-card {
     background: #ffffff;
-    padding: 35px;
+    padding: 35px 40px;
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     border: 1px solid #eaeaea;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .calc-card h2 {
-    font-size: 24px;
+    font-size: 26px;
     color: #0066cc;
     margin-bottom: 25px;
     border-bottom: 2px solid #0066cc;
-    padding-bottom: 10px;
+    padding-bottom: 12px;
+  }
+
+  /* 4. 單欄式滿版表單 */
+  .calc-form {
+    width: 100%;
+    display: block;
   }
 
   .calc-form .form-group {
+    width: 100%;
     margin-bottom: 22px;
   }
 
@@ -51,12 +67,14 @@
   .calc-form .input-row {
     display: flex;
     align-items: center;
-    gap: 10px;
+    width: 100%;
+    gap: 12px;
   }
 
   .calc-form input[type="number"] {
     width: 100%;
-    padding: 10px 12px;
+    flex: 1;
+    padding: 12px 14px;
     border: 1px solid #ccc;
     border-radius: 6px;
     font-size: 16px;
@@ -83,7 +101,7 @@
 
   .calc-form .radio-group {
     display: flex;
-    gap: 20px;
+    gap: 30px;
     margin-top: 8px;
   }
 
@@ -95,18 +113,19 @@
     font-weight: normal;
   }
 
+  /* 5. 滿版試算按鈕 */
   .btn-calc {
     width: 100%;
     background-color: #0066cc;
     color: white;
     border: none;
-    padding: 14px;
+    padding: 16px;
     font-size: 18px;
     font-weight: bold;
     border-radius: 6px;
     cursor: pointer;
     transition: background-color 0.2s, transform 0.1s;
-    margin-top: 10px;
+    margin-top: 15px;
   }
 
   .btn-calc:hover {
@@ -117,12 +136,13 @@
     transform: scale(0.99);
   }
 
-  /* 結果顯示區 */
+  /* 6. 滿版結果顯示區 */
   .result-box {
+    width: 100%;
     margin-top: 25px;
-    padding: 22px 25px;
+    padding: 25px 30px;
     background-color: #f0f7ff;
-    border-left: 5px solid #0066cc;
+    border-left: 6px solid #0066cc;
     border-radius: 4px;
     display: none;
   }
@@ -141,32 +161,40 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
-    font-size: 15px;
+    font-size: 16px;
   }
 
   .result-detail {
-    font-size: 13px;
+    font-size: 14px;
     color: #555;
     margin-bottom: 12px;
     background: #e4f0fc;
-    padding: 8px 12px;
+    padding: 10px 14px;
     border-radius: 4px;
     line-height: 1.5;
   }
 
   .result-total {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: bold;
     color: #d9534f;
     border-top: 1px dashed #bbb;
-    padding-top: 14px;
-    margin-top: 12px;
+    padding-top: 16px;
+    margin-top: 14px;
   }
 
+  /* 手機版響應式 */
   @media (max-width: 768px) {
-    .calc-card-wrapper { padding: 0 15px; }
-    .calc-card { padding: 20px; }
-    .calc-form .radio-group { flex-direction: column; gap: 10px; }
+    .calc-card-wrapper {
+      padding: 0 15px;
+    }
+    .calc-card {
+      padding: 20px;
+    }
+    .calc-form .radio-group {
+      flex-direction: column;
+      gap: 10px;
+    }
   }
 </style>
 
@@ -177,7 +205,7 @@
 
   <!-- 2. Hero Banner 與橫幅標題 -->
   <section class="hero-banner">
-    <h1 class="hero-title">公證效力及費用與法院相同</h1>
+    <h1 class="hero-title">公證費試算</h1>
   </section>
 
   <!-- 麵包屑導航 (Breadcrumb) -->
