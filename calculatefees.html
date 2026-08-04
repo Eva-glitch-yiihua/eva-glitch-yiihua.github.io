@@ -21,58 +21,12 @@
       color: #333;
     }
 
-    /* 1. 頂部導覽列 (Header) */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 50px;
-      background-color: #fff;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    }
-
-    .logo-container {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .logo-img {
-      height: 45px;
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #333;
-      font-size: 15px;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-
-    nav a:hover, nav a.active {
-      color: #0066cc;
-    }
-
-    .header-icons {
-      display: flex;
-      gap: 12px;
-      margin-left: 10px;
-      font-size: 18px;
-      color: #555;
-    }
-
-    /* 2. Hero Banner 區塊 */
+    /* Hero Banner 區塊 */
     .hero-banner {
       position: relative;
       width: 100%;
-      height: 260px;
-      background: linear-gradient(rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.25)), 
+      height: 220px;
+      background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), 
                   url('https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
       display: flex;
       justify-content: center;
@@ -81,16 +35,16 @@
 
     .hero-title {
       font-size: 32px;
-      color: #222;
-      letter-spacing: 4px;
-      text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8);
+      color: #fff;
+      letter-spacing: 3px;
+      text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.6);
       font-weight: 600;
     }
 
     /* 麵包屑導航 */
     .breadcrumb-container {
-      max-width: 1200px;
-      margin: 15px auto;
+      max-width: 800px;
+      margin: 15px auto 0;
       padding: 0 20px;
       text-align: right;
       font-size: 14px;
@@ -98,7 +52,7 @@
     }
 
     .breadcrumb-container a {
-      color: #666;
+      color: #0066cc;
       text-decoration: none;
     }
 
@@ -106,7 +60,7 @@
       text-decoration: underline;
     }
 
-    /* 3. 主要試算器內容區塊 */
+    /* 主要試算器內容區塊 */
     .container {
       max-width: 800px;
       margin: 20px auto 60px;
@@ -197,7 +151,7 @@
       font-weight: bold;
       border-radius: 6px;
       cursor: pointer;
-      transition: background-color 0.2s;
+      transition: background-color 0.2s, transform 0.1s;
       margin-top: 10px;
     }
 
@@ -205,10 +159,14 @@
       background-color: #004b99;
     }
 
+    .btn-calc:active {
+      transform: scale(0.99);
+    }
+
     /* 結果顯示區 */
     .result-box {
       margin-top: 25px;
-      padding: 20px 25px;
+      padding: 22px 25px;
       background-color: #f0f7ff;
       border-left: 5px solid #0066cc;
       border-radius: 4px;
@@ -217,13 +175,29 @@
 
     .result-box.active {
       display: block;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .result-row {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       font-size: 15px;
+    }
+
+    .result-detail {
+      font-size: 13px;
+      color: #555;
+      margin-bottom: 12px;
+      background: #e4f0fc;
+      padding: 8px 12px;
+      border-radius: 4px;
+      line-height: 1.5;
     }
 
     .result-total {
@@ -235,50 +209,7 @@
       margin-top: 12px;
     }
 
-    /* 4. 下拉選單與懸浮按鈕 */
-    .dropdown {
-      position: relative;
-      display: inline-block;
-    }
-
-    .dropdown-menu {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      min-width: 160px;
-      background-color: #ffffff;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-      border-radius: 6px;
-      padding: 8px 0;
-      z-index: 1000;
-      border: 1px solid #e1e8ed;
-    }
-
-    .dropdown-menu a {
-      color: #333333;
-      padding: 10px 16px;
-      text-decoration: none;
-      display: block;
-      font-size: 14px;
-      white-space: nowrap;
-      transition: background-color 0.2s, color 0.2s;
-    }
-
-    .dropdown-menu a:hover {
-      background-color: #eaf2f8;
-      color: #0066cc;
-    }
-
-    .dropdown:hover .dropdown-menu {
-      display: block;
-    }
-
-    .dropdown:hover .fa-angle-down {
-      transform: rotate(180deg);
-      transition: transform 0.3s;
-    }
-
+    /* 懸浮按鈕 */
     .floating-socials {
       position: fixed;
       right: 20px;
@@ -312,12 +243,10 @@
     .btn-phone { background-color: #f37023; }
     .btn-msg { background-color: #0084ff; }
 
-    /* 響應式調整 */
     @media (max-width: 768px) {
-      header { padding: 15px 20px; flex-direction: column; gap: 15px; }
-      nav { flex-wrap: wrap; justify-content: center; }
       .container { padding: 0 15px; }
       .calc-card { padding: 20px; }
+      .radio-group { flex-direction: column; gap: 10px; }
     }
   </style>
 </head>
@@ -332,10 +261,14 @@
 
   <!-- 麵包屑導航 (Breadcrumb) -->
   <div class="breadcrumb-container">
+    <a href="#">首頁</a> 
+  </div>
+  <div id="header-container"></div>
+
+  <div class="breadcrumb-container">
     <a href="home.html">首頁</a> &gt; <span>公證費試算</span>
   </div>
 
-  <!-- 3. 主要內容區域 (線上試算器) -->
   <main class="container">
     <div class="calc-card">
       <h2>房屋租約 — 公證費線上試算</h2>
@@ -345,7 +278,7 @@
         <div class="form-group">
           <label for="monthlyRent">月租金：</label>
           <div class="input-row">
-            <input type="number" id="monthlyRent" placeholder="請輸入月租金" oninput="autoCalcTotalRent()">
+            <input type="number" id="monthlyRent" min="0" placeholder="請輸入月租金" oninput="autoCalcTotalRent()">
             <span class="unit">元</span>
           </div>
         </div>
@@ -364,9 +297,9 @@
 
         <!-- 租金總額 -->
         <div class="form-group">
-          <label for="totalRent">租金總額：</label>
+          <label for="totalRent">租金總金額（自動計算）：</label>
           <div class="input-row">
-            <input type="number" id="totalRent" placeholder="自動計算或自行填寫">
+            <input type="number" id="totalRent" min="0" placeholder="自動計算金額" readonly style="background-color: #f9f9f9;">
             <span class="unit">元</span>
           </div>
         </div>
@@ -375,7 +308,7 @@
         <div class="form-group">
           <label for="deposit">押金：</label>
           <div class="input-row">
-            <input type="number" id="deposit" placeholder="請輸入押金金額" value="0">
+            <input type="number" id="deposit" min="0" placeholder="請輸入押金金額" value="0">
             <span class="unit">元</span>
           </div>
         </div>
@@ -384,10 +317,10 @@
         <div class="form-group">
           <label for="taxValue">房屋課稅現值：</label>
           <div class="input-row">
-            <input type="number" id="taxValue" placeholder="若無可不填" value="0">
+            <input type="number" id="taxValue" min="0" placeholder="若無課稅現值可填 0" value="0">
             <span class="unit">元</span>
           </div>
-          <p class="note">(請參考最新一期房屋稅稅單或房屋稅籍證明書的「房屋課稅現值」)</p>
+          <p class="note">(請參考最新一期房屋稅繳款書或房屋稅籍證明書之「房屋課稅現值」)</p>
         </div>
 
         <!-- 是否約定強制執行 -->
@@ -406,7 +339,7 @@
             <label class="radio-label"><input type="radio" name="holiday" value="yes"> 是</label>
             <label class="radio-label"><input type="radio" name="holiday" value="no" checked> 否</label>
           </div>
-          <p class="note">*說明：夜間 (17:30以後) 或例假日辦理，費用加收50% (加收部分上限最高為 5,000 元)。</p>
+          <p class="note">*說明：夜間 (17:30 後) 或例假日辦理，費用加收 50% (加收最高上限為 5,000 元)。</p>
         </div>
 
         <button class="btn-calc" onclick="calculateFee()">開始試算公證費</button>
@@ -415,25 +348,44 @@
       <!-- 試算結果顯示區 -->
       <div class="result-box" id="resultBox">
         <div class="result-row">
-          <span>計算標準一（租金總額 + 押金）：</span>
+          <span>計算標準（一）：</span>
           <strong id="resStd1">0 元</strong>
         </div>
+        <div class="result-detail" id="detailStd1">
+          算式：租金 0 元 ✕ 0 個月 + 押金 0 元 ＝ 0 元
+        </div>
+
         <div class="result-row">
-          <span>計算標準二（課稅現值 + 押金）：</span>
+          <span>計算標準（二）：</span>
           <strong id="resStd2">0 元</strong>
         </div>
-        <div class="result-row">
-          <span>採計之標的金額（取高者）：</span>
+        <div class="result-detail" id="detailStd2">
+          算式：房屋課稅現值 0 元 + 押金 0 元 ＝ 0 元
+        </div>
+
+        <div class="result-row" style="margin-top: 15px;">
+          <span>採計之公證標的金額（比較兩者取高）：</span>
           <strong id="resFinalTarget" style="color: #0066cc;">0 元</strong>
         </div>
+        <div class="result-detail" id="detailComparison" style="background: #d8eaff; font-weight: 500;">
+          比較兩個計算標準，以較高之計算標準...
+        </div>
+
+        <hr style="border: 0; border-top: 1px dashed #ccc; margin: 15px 0;">
+
         <div class="result-row">
           <span>基本公證費用：</span>
           <strong id="resBaseFee">0 元</strong>
+        </div>
+        <div class="result-row" id="executionFeeRow">
+          <span>載明逕受強制執行加收 (50%)：</span>
+          <strong id="resExecutionFee">0 元</strong>
         </div>
         <div class="result-row" id="holidayFeeRow" style="display:none;">
           <span>夜間/假日加收費用：</span>
           <strong id="resHolidayFee">0 元</strong>
         </div>
+
         <div class="result-row result-total">
           <span>預估總公證費用：</span>
           <span id="resTotalFee">0 元</span>
@@ -442,34 +394,32 @@
     </div>
   </main>
 
-  <!-- 4. 右下角懸浮按鈕區塊 -->
   <div class="floating-socials">
-    <a href="#" class="social-btn btn-fb"><i class="fa-brands fa-facebook-f"></i></a>
-    <a href="#" class="social-btn btn-line"><i class="fa-brands fa-line"></i></a>
-    <a href="#" class="social-btn btn-phone"><i class="fa-solid fa-phone"></i></a>
-    <a href="#" class="social-btn btn-msg"><i class="fa-brands fa-facebook-messenger"></i></a>
+    <a href="#" class="social-btn btn-fb" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+    <a href="#" class="social-btn btn-line" title="LINE"><i class="fa-brands fa-line"></i></a>
+    <a href="#" class="social-btn btn-phone" title="電話諮詢"><i class="fa-solid fa-phone"></i></a>
+    <a href="#" class="social-btn btn-msg" title="Messenger"><i class="fa-brands fa-facebook-messenger"></i></a>
   </div>
 
   <div id="footer-container"></div>
-  
-  <!-- JavaScript 邏輯區 -->
+
   <script>
     // 自動計算租金總額
     function autoCalcTotalRent() {
-      const rent = parseFloat(document.getElementById('monthlyRent').value) || 0;
-      const years = parseFloat(document.getElementById('rentYears').value) || 0;
-      const months = parseFloat(document.getElementById('rentMonths').value) || 0;
+      const rent = Math.max(0, parseFloat(document.getElementById('monthlyRent').value) || 0);
+      const years = Math.max(0, parseFloat(document.getElementById('rentYears').value) || 0);
+      const months = Math.max(0, parseFloat(document.getElementById('rentMonths').value) || 0);
       
       const totalMonths = (years * 12) + months;
       document.getElementById('totalRent').value = rent * totalMonths;
     }
 
-    // 司法院公證費級距查詢函數
+    // 司法院標準公證費用級距表 (依金額對照基本費用)
     function getNotaryBaseFee(amount) {
       if (amount <= 200000) return 1000;
-      if (amount <= 500000) return 1500;
+      if (amount <= 500000) return 2000;
       if (amount <= 1000000) return 3000;
-      if (amount <= 2000000) return 4500;
+      if (amount <= 2000000) return 4000;
       if (amount <= 5000000) return 5000;
       if (amount <= 10000000) return 6000;
       if (amount <= 20000000) return 8000;
@@ -482,45 +432,75 @@
 
     // 主試算邏輯
     function calculateFee() {
-      const totalRent = parseFloat(document.getElementById('totalRent').value) || 0;
-      const deposit = parseFloat(document.getElementById('deposit').value) || 0;
-      const taxValue = parseFloat(document.getElementById('taxValue').value) || 0;
+      const monthlyRent = Math.max(0, parseFloat(document.getElementById('monthlyRent').value) || 0);
+      const years = Math.max(0, parseFloat(document.getElementById('rentYears').value) || 0);
+      const months = Math.max(0, parseFloat(document.getElementById('rentMonths').value) || 0);
+      const deposit = Math.max(0, parseFloat(document.getElementById('deposit').value) || 0);
+      const taxValue = Math.max(0, parseFloat(document.getElementById('taxValue').value) || 0);
       
-      const hasExecution = document.querySelector('input[name="execution"]:checked').value === 'yes';
-      const isHoliday = document.querySelector('input[name="holiday"]:checked').value === 'yes';
+      const totalMonths = (years * 12) + months;
+      const totalRent = monthlyRent * totalMonths;
 
-      // 1. 計算兩標準金額
-      const std1 = totalRent + deposit;
-      const std2 = taxValue + deposit;
-      const finalTarget = Math.max(std1, std2);
-
-      if (finalTarget <= 0) {
-        alert("請輸入有效的租金或金額！");
+      if (totalMonths <= 0 && deposit <= 0 && taxValue <= 0) {
+        alert("請輸入有效的租金、租期或金額！");
         return;
       }
 
-      // 2. 計算基礎公證費 (非強制執行)
-      let baseFee = getNotaryBaseFee(finalTarget);
+      const hasExecution = document.querySelector('input[name="execution"]:checked').value === 'yes';
+      const isHoliday = document.querySelector('input[name="holiday"]:checked').value === 'yes';
 
-      // 3. 是否有附加逕受強制執行（加收 50%，即乘以 1.5）
-      if (hasExecution) {
-        baseFee = baseFee * 1.5;
-      }
+      // 1. 計算標準（一）：總租金 + 押金
+      const std1 = totalRent + deposit;
 
-      // 4. 計算夜間/假日加成（加收 50%，但加收上限 5,000 元）
+      // 2. 計算標準（二）：房屋課稅現值 + 押金
+      const std2 = taxValue + deposit;
+
+      // 3. 比較二個計算標準，取其高者
+      const finalTarget = Math.max(std1, std2);
+      const isStd1Higher = std1 >= std2;
+
+      // 4. 計算基本公證費與各項加價
+      const baseFee = getNotaryBaseFee(finalTarget);
+      const executionFee = hasExecution ? (baseFee * 0.5) : 0; // 強制執行加收 50%
+
+      // 夜間/假日加成（以基本費用之 50% 計算，上限 5,000 元）
       let holidayFee = 0;
       if (isHoliday) {
         holidayFee = Math.min(baseFee * 0.5, 5000);
       }
 
-      const totalFee = baseFee + holidayFee;
+      const totalFee = baseFee + executionFee + holidayFee;
 
-      // 5. 渲染結果到畫面
+      // 5. 渲染詳細說明算式與結果
       document.getElementById('resStd1').innerText = std1.toLocaleString() + ' 元';
+      document.getElementById('detailStd1').innerText = 
+        `算式：租金 ${monthlyRent.toLocaleString()} 元 ✕ ${totalMonths} 個月 + 押金 ${deposit.toLocaleString()} 元 ＝ ${std1.toLocaleString()} 元`;
+
       document.getElementById('resStd2').innerText = std2.toLocaleString() + ' 元';
+      document.getElementById('detailStd2').innerText = 
+        `算式：房屋課稅現值 ${taxValue.toLocaleString()} 元 + 押金 ${deposit.toLocaleString()} 元 ＝ ${std2.toLocaleString()} 元`;
+
       document.getElementById('resFinalTarget').innerText = finalTarget.toLocaleString() + ' 元';
+      
+      if (isStd1Higher) {
+        document.getElementById('detailComparison').innerText = 
+          `比較二個計算標準，以較高之計算標準（一）＝ ${std1.toLocaleString()} 元來計算公證費用。`;
+      } else {
+        document.getElementById('detailComparison').innerText = 
+          `比較二個計算標準，以較高之計算標準（二）＝ ${std2.toLocaleString()} 元來計算公證費用。`;
+      }
+
       document.getElementById('resBaseFee').innerText = baseFee.toLocaleString() + ' 元';
 
+      // 顯示/隱藏 強制執行加收欄位
+      if (hasExecution) {
+        document.getElementById('executionFeeRow').style.display = 'flex';
+        document.getElementById('resExecutionFee').innerText = executionFee.toLocaleString() + ' 元';
+      } else {
+        document.getElementById('executionFeeRow').style.display = 'none';
+      }
+
+      // 顯示/隱藏 假日夜間加收欄位
       if (isHoliday) {
         document.getElementById('holidayFeeRow').style.display = 'flex';
         document.getElementById('resHolidayFee').innerText = holidayFee.toLocaleString() + ' 元';
@@ -532,19 +512,38 @@
       document.getElementById('resultBox').classList.add('active');
     }
 
-    // 載入 Header
-    fetch('header.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('header-container').innerHTML = data;
-      });
+    // 載入 Header/Footer Component
+    function loadComponent(id, file) {
+      fetch(file)
+        .then(response => {
+          if (!response.ok) throw new Error('Network error');
+          return response.text();
+        })
+        .then(data => {
+          document.getElementById(id).innerHTML = data;
+        })
+        .catch(err => {
+          console.warn(`無法載入 ${file}`, err);
+        });
+    }
 
-    // 載入 Footer
-    fetch('footer.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('footer-container').innerHTML = data;
-      });
+    window.addEventListener('DOMContentLoaded', () => {
+      loadComponent('header-container', 'header.html');
+      loadComponent('footer-container', 'footer.html');
+
+      // 載入 Header
+      fetch('header.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('header-container').innerHTML = data;
+        });
+
+      // 載入 Footer
+      fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('footer-container').innerHTML = data;
+    });
   </script>
 </body>
 </html>
