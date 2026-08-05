@@ -1,12 +1,9 @@
-/* ==========================================
-   文章版面專用樣式 (article-style.css)
-   ========================================== */
 
 /* 1. 全螢幕滿版容器與卡片 */
 .full-width-container {
   width: 100%;
   max-width: 800px; /* ★ 限制最大寬度，讓版面變窄 */
-  
+  margin: 0 auto; /* ★ 置中對齊 */
   padding: 30px 40px;
   box-sizing: border-box;
   font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
