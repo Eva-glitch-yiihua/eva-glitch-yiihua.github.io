@@ -16,6 +16,31 @@
     padding: 0;
     overflow-x: hidden; /* 防止橫向滾動條 */
   }
+  .calc-card-wrapper {
+      width: 100%;
+      max-width: 600px; /* 設置最大寬度，使其不會太寬 */
+      margin: 0 ;
+    }
+
+    .calc-notes {
+      list-style-type: none; /* 移除點 */
+      padding: 0;
+      margin-bottom: 25px; /* 添加邊距，使其呼吸 */
+      color: #666; /* 灰色文本 */
+      font-size: 15px;
+    }
+
+    .calc-notes li {
+      margin-bottom: 10px; /* 添加項目之間的邊距 */
+      line-height: 1.5;
+    }
+
+    .calc-notes li{
+      font-weight: bold;
+      font-size: 1.1em;
+      color: #333; 
+      margin-bottom: 15px; /* 標題下方的額外邊距 */
+    }
 
   /* 強制修正 container 為單欄滿版 */
   .container {
@@ -215,8 +240,19 @@
 
   <!-- 3. 主要內容區域 -->
   <main class="container">
+    <div class="calc-card-wrapper">
+      <ul class="calc-notes">
+        
+        <li>計算標準(一)：總租金+押金</li>
+        <li>計算標準(二)：房屋課稅現值+押金</li>
+        <li>兩者取高者</li>
+      </ul>
+    </div>
+
     <div class="calc-card">
       <h2>房屋租約 — 公證費線上試算</h2>
+
+      
 
       <div class="calc-form">
         <!-- 月租金 -->
@@ -347,8 +383,6 @@
   </div>
 
   <div id="footer-container"></div>
-  
-  
 
   <script>
     //載入 Header
