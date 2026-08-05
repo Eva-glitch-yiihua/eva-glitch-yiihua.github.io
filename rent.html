@@ -3,524 +3,161 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>租金扣繳及二代健保補充保費 實務指引 - 民間公證人 三民公證所</title>
+  <title>房東如何合法節稅？ 實務指引 - 民間公證人 三民公證所</title>
+  
   <!-- 引入 FontAwesome 圖示庫 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- 引入共用樣式表 (假設有的話，若無則使用下方的 style 標籤樣式) -->
+  
+  <!-- 引入全站共用樣式表 -->
   <link rel="stylesheet" href="style.css">
+  
+  <!-- 引入本頁專用文章排版樣式 (剛剛獨立出來的檔案) -->
+  <link rel="stylesheet" href="style2.css">
 </head>
-<style>
-/* ==========================================
-   完全復刻使用者提供的網格排版樣式
-   ========================================== */
-
-/* 全螢幕滿版容器，左右保留安全邊距 */
-.full-width-container {
-  width: 100%;
-  padding: 30px 40px;
-  box-sizing: border-box;
-  font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
-  background-color: #f4f4f4; /* 頁面背景色 */
-}
-
-/* 滿版卡片本體 */
-.full-width-card {
-  background: #ffffff;
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-  border: 1px solid #eaeaea;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-/* 文章主標題樣式 */
-.article-title {
-  font-size: 32px;
-  color: #0066cc;
-  border-bottom: 2px solid #0066cc;
-  padding-bottom: 12px;
-  margin-bottom: 30px;
-  font-weight: 700;
-  margin-top: 0;
-}
-
-/* 橫向網格容器：PC 上預設為兩欄並排 */
-.horizontal-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 欄橫向並排 */
-  gap: 30px; /* 區塊間距 */
-}
-
-/* 區塊樣式 (灰底) */
-.section-block {
-  background: #fafafa;
-  padding: 25px;
-  border-radius: 8px;
-  border: 1px solid #f0f0f0;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
-
-/* 費用計算或比較表等較寬內容，跨滿兩欄 */
-.horizontal-grid .full-width-item {
-  grid-column: span 2;
-}
-
-/* 區塊小標題 */
-.section-title {
-  font-size: 20px;
-  color: #1a252f;
-  margin-bottom: 15px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 600;
-  margin-top: 0;
-}
-
-/* 區塊小標題圖示顏色 */
-.section-title i {
-  color: #0066cc;
-}
-
-/* 區塊內文 */
-.section-content {
-  font-size: 15px;
-  color: #4a5568;
-  line-height: 1.8; /* 稍微增加行高提升閱讀率 */
-  flex-grow: 1;
-}
-
-/* 區塊內文段落間距 */
-.section-content p {
-  margin-top: 0;
-  margin-bottom: 10px;
-}
-
-/* 區塊內文最後一個段落不留底邊距 */
-.section-content p:last-child {
-  margin-bottom: 0;
-}
-
-/* 高亮文字 (例如：超過、達、逕受強制執行) */
-.highlight-text {
-  color: #d9534f;
-  font-weight: 600;
-}
-
-/* 藍色提示框 (Info Box) */
-.info-box {
-  background-color: #f0f7ff;
-  border-left: 4px solid #0066cc;
-  padding: 16px 20px;
-  border-radius: 4px;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  font-size: 14px;
-  color: #333;
-}
-
-/* 橘色警告框 (Warning Box) */
-.warning-box {
-  background-color: #fff8f0;
-  border-left: 4px solid #f37023;
-  padding: 16px 20px;
-  border-radius: 4px;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  font-size: 14px;
-  color: #333;
-}
-
-/* 提示框/警告框標題 */
-.info-box-title, .warning-box-title {
-  font-weight: bold;
-  margin-bottom: 8px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 15px;
-}
-
-.info-box-title { color: #0066cc; }
-.warning-box-title { color: #f37023; }
-
-/* 提示框/警告框內的段落間距 */
-.info-box p, .warning-box p {
-  margin: 4px 0;
-  line-height: 1.6;
-}
-
-/* 自訂勾選清單 (Custom List) */
-.custom-list {
-  list-style: none;
-  padding-left: 0;
-  margin: 12px 0;
-}
-
-.custom-list li {
-  position: relative;
-  padding-left: 28px; /* 增加左邊距給勾選符號 */
-  margin-bottom: 10px;
-  line-height: 1.6;
-}
-
-/* 清單勾選符號樣式 */
-.custom-list li::before {
-  content: "✓";
-  position: absolute;
-  left: 0;
-  color: #0066cc;
-  font-weight: bold;
-  font-size: 16px;
-}
-
-/* 費用/比較表格樣式 */
-.fee-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  font-size: 15px;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-}
-
-/* 表格標頭與單元格 */
-.fee-table th, .fee-table td {
-  border: 1px solid #e2e8f0;
-  padding: 15px;
-  text-align: left;
-  vertical-align: top; /* 內容靠上對齊 */
-}
-
-/* 表格標頭樣式 */
-.fee-table th {
-  background-color: #f7fafc;
-  color: #2d3748;
-  font-weight: 600;
-  white-space: nowrap; /* 標頭不換行 */
-}
-
-/* 表格內清單樣式 */
-.fee-table ul {
-  margin: 0;
-  padding-left: 18px;
-}
-
-.fee-table li {
-  margin-bottom: 6px;
-}
-
-/* 計算範例區塊樣式 (例一、例二) */
-.calc-example {
-  border: 1px solid #e0e0e0;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 6px;
-  margin-bottom: 20px;
-}
-
-.calc-example:last-child {
-  margin-bottom: 0;
-}
-
-/* 計算範例標題 (例一、例二) */
-.calc-example-title {
-  font-size: 17px;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #eee;
-}
-
-/* 計算項目與結果 */
-.calc-item {
-  margin-bottom: 8px;
-  display: flex;
-  justify-content: space-between; /* 項目與金額分開 */
-  align-items: center;
-}
-
-.calc-item strong {
-  color: #d9534f;
-  font-size: 16px;
-}
-
-/* 實拿/實際給付總計區塊 */
-.calc-total {
-  margin-top: 15px;
-  padding-top: 12px;
-  border-top: 2px solid #0066cc;
-  font-size: 16px;
-  background-color: #f0f7ff;
-  padding: 12px;
-  border-radius: 4px;
-}
-
-/* 網站連結樣式 */
-.section-content a {
-  color: #0066cc;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.section-content a:hover {
-  text-decoration: underline;
-}
-
-/* ==========================================
-   響應式設計：行動裝置適應
-   ========================================== */
-@media (max-width: 992px) {
-  /* 手機/平板上改為單欄直向呈現 */
-  .horizontal-grid {
-    grid-template-columns: 1fr; /* 單欄 */
-  }
-  
-  /* 滿版項目也回復單欄 */
-  .horizontal-grid .full-width-item {
-    grid-column: span 1;
-  }
-  
-  /* 縮小容器邊距 */
-  .full-width-container {
-    padding: 15px;
-  }
-  
-  /* 縮小卡片內邊距 */
-  .full-width-card {
-    padding: 25px 20px;
-  }
-  
-  /* 調整文章標題字號 */
-  .article-title {
-    font-size: 26px;
-  }
-  
-  /* 調整區塊小標題字號 */
-  .section-title {
-    font-size: 18px;
-  }
-}
-</style>
 <body>
 
-  <!-- 1. Header 頁首導覽 (保持預留，假設透過 JS 載入) -->
+  <!-- 1. Header 頁首導覽 (保持預留) -->
   <div id="header-container"></div>
 
-  <!-- 2. Hero Banner (保持預留，套用一般 Banner 樣式) -->
+  <!-- 2. Hero Banner (保持預留) -->
   <section class="hero-banner">
     <h1 class="hero-title">公證法律知識庫</h1>
   </section>
 
   <!-- 3. 麵包屑導航 (Breadcrumb) (保持預留) -->
   <div class="breadcrumb-container">
-    <a href="#">首頁</a> > <span>房屋租約公證</span> > <span>租金扣繳與二代健保</span>
+    <a href="#">首頁</a> > <span>房屋租約公證</span> > <span>租金節稅指引</span>
   </div>
 
-  <!-- 4. 主要內容區域：完全套用金錢借貸範本排版 -->
+  <!-- 4. 主要內容區域 -->
   <main class="full-width-container">
   <article class="full-width-card">
-    <h1 class="article-title">租金扣繳及二代健保補充保費 實務指引</h1>
+    <h1 class="article-title">房東如何合法節稅？</h1>
 
-    <!-- 橫向網格容器：將各區塊 PC 端並排呈现 -->
+    <!-- 網格容器：所有區塊將在此垂直堆疊呈現 -->
     <div class="horizontal-grid">
       
-      <!-- 問題一區塊 -->
+      <!-- 區塊一：法定制費用扣除 -->
       <section class="section-block">
         <h2 class="section-title">
-          <i class="fa-solid fa-question-circle"></i> 問題一：什麼情形需要繳交？
+          <i class="fa-solid fa-percent"></i> 房屋租金收入的 43% 列為必要費用
         </h2>
         <div class="section-content">
           <p>
-            當租賃關係符合特定的構成要件時，房客（承租人）即負有扣繳義務。
+            房屋租賃所得的申報方式，有一種是<strong>不需要任何證明文件</strong>，一律將當年度房屋租金收入的 <span class="highlight-text">43% 列為必要費用</span>進行扣除。
+          </p>
+          <p>
+            藉此可有效降低租賃房屋所得總額，不必為了保留修理費、房屋稅等各項憑證而煩惱。
           </p>
           
-          <h3 style="font-size: 16px; color: #333; margin-top: 15px; margin-bottom: 8px;">構成要件（需同時符合）：</h3>
-          <ul class="custom-list">
-            <li><strong>房東身分：</strong>必須是<span class="highlight-text">自然人</span>（非公司或商號）。</li>
-            <li><strong>租賃用途：</strong>必須是租給房客作<span class="highlight-text">營業使用</span>（如開公司、商號、行號、執行業務等）。</li>
-            <li><strong>月租金金額：</strong></li>
-          </ul>
+          <div class="info-box">
+            <div class="info-box-title"><i class="fa-solid fa-calculator"></i> 計算範例：</div>
+            <p><strong>房屋月租金 2 萬元</strong></p>
+            <p>1. 當年度總租金收入：24 萬元（＝2萬元 × 12個月）</p>
+            <p>2. 法定必要費用扣除：<strong>103,200 元</strong>（＝24萬元 × <span class="highlight-text">43%</span>）</p>
+            <p>👉 當年度租賃房屋所得為 <strong>136,800 元</strong>（＝24萬元 × 57%）</p>
+          </div>
+
+          <div class="info-box" style="background-color: #fff8f0; border-left-color: #f37023;">
+            <div class="info-box-title" style="color: #f37023;"><i class="fa-solid fa-lightbulb"></i> 溫馨小叮嚀：</div>
+            <p><span class="highlight-text">土地租賃收入</span>，僅能扣除該地當年度地價稅，<strong>不得</strong>將租金之 43% 列為必要費用。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 區塊二：列舉費用扣除 -->
+      <section class="section-block">
+        <h2 class="section-title">
+          <i class="fa-solid fa-file-invoice-dollar"></i>支出憑證高於 43% 得列舉扣除
+        </h2>
+        <div class="section-content">
+          <p>
+            若您因租賃所生之合理、必要損耗及費用較高，可採<strong>列舉扣除方式</strong>，提出證明文件來降低稅負。
+          </p>
           
-          <table class="fee-table" style="margin-top: 0; border: none; background: transparent;">
-            <tr>
-              <td style="border: none; padding: 0 0 10px 28px; width: auto; color: #555;">達 <strong style="color: #333;">2 萬元</strong> (含剛好2萬元)</td>
-              <td style="border: none; padding: 0 0 10px 10px; color: #d9534f;">👉 應繳納 <strong>2.11% 二代健保補充保費</strong></td>
-            </tr>
-            <tr>
-              <td style="border: none; padding: 0 0 0 28px; width: auto; color: #555;">超過 <strong style="color: #333;">2 萬元</strong> (不含剛好2萬元)</td>
-              <td style="border: none; padding: 0 0 0 10px; color: #d9534f;">👉 應再繳納 <strong>10% 租金扣繳稅款</strong></td>
-            </tr>
-          </table>
+          <h3 style="font-size: 16px; color: #333; margin-top: 15px; margin-bottom: 10px;">可列舉損耗及費用包括：</h3>
+          <ul class="custom-list">
+            <li><strong>房屋修理費：</strong>（需檢附相關施工憑證與發票）。</li>
+            <li><strong>稅費：</strong>房屋地價稅、房屋稅及其附加捐。</li>
+            <li><strong>保險費：</strong>出租房屋之火險、地震險等。</li>
+            <li><strong>折舊費用：</strong>房屋本身之折舊費。</li>
+            <li><strong>購屋貸款利息：</strong>向金融機構貸款購屋而出租，所支付的利息。</li>
+          </ul>
+
+          <div class="info-box" style="margin-top: 20px; border-left-color: #d9534f; background-color: #fff5f5;">
+            <p style="font-weight: 600; color: #d9534f; font-size: 15px; margin: 0;">
+              👉 建議房東可試算哪一種申報方式的費用扣除額較高，<span class="highlight-text">取高者來申報</span>，以最大化節稅效益。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 區塊三：無償借用公證 -->
+      <section class="section-block">
+        <h2 class="section-title">
+          <i class="fa-solid fa-gavel"></i> 無償借用他人應公證以免設算所得
+        </h2>
+        <div class="section-content">
+          <p>
+            實務上若屋主將房屋無償借給他人使用，若未能證明確實無收租，仍恐被設算租賃收入。
+          </p>
+          
+          <div class="warning-box" style="background-color: #fff8f0; border-left: 4px solid #f37023; padding: 16px; border-radius: 4px; margin: 15px 0;">
+            <p style="font-weight: bold; color: #f37023; margin-bottom: 8px;">👉 以下情形需設算租賃所得：</p>
+            <p>若房屋借給配偶或直系血親以外之親友用來<span class="highlight-text">營業用</span>（例如：公司、行號、事務所、診所等），不論實際上是否有收租金，屋主都要申報租賃所得。</p>
+          </div>
 
           <div class="info-box">
-            <div class="info-box-title"><i class="fa-solid fa-lightbulb"></i> 溫馨小叮嚀：</div>
-            <p><strong>若月租金“剛好為2萬元” 整：</strong>只要繳交二代健保補充保費 422 元（＝20000×2.11%），<span class="highlight-text">不用繳交「10%租金扣繳稅款」</span>。</p>
-            <p><strong>房東為外國人（非健保保戶）：</strong><span class="highlight-text">不需要繳交二代健保補充保費</span>。</p>
-            <p><strong>二代健保費率調整：</strong>自 110 年 1 月 1 日起，費率調整至 <strong>2.11%</strong>。</p>
-          </div>
-
-          <div class="warning-box">
-            <div class="warning-box-title"><i class="fa-solid fa-times-circle"></i> 不適用情形 (免扣繳)：</div>
-            <p>月租金不到 2 萬元。</p>
-            <p>房東是「公司」或「法人」而非自然人。</p>
-            <p>房客租來非營業使用（例如：供純住宅用）。</p>
+            <div class="info-box-title"><i class="fa-solid fa-star"></i> 免設算所得之構成要件：</div>
+            <p>1. 無償借給他人作<span class="highlight-text">住家使用</span>（非營業用）。</p>
+            <p>2. 由兩位見證人陪同雙方當事人<span class="highlight-text">完成公證</span>，證明確實是無償借用（所得稅法施行細則第88條）。</p>
+            <p style="margin-top: 6px; font-weight: 500; color: #0066cc;">如此就可以不用被國稅局設算租金收入，合法避稅。</p>
           </div>
         </div>
       </section>
 
-      <!-- 問題二區塊 -->
+      <!-- 區塊四：書面終止租約 -->
       <section class="section-block">
         <h2 class="section-title">
-          <i class="fa-solid fa-calculator"></i> 問題二：如何計算金額？
+          <i class="fa-solid fa-file-signature"></i> 租約提前終止應簽書面
         </h2>
         <div class="section-content">
           <p>
-            計算方式依據合約約定之租金是否包含稅金而有所不同。
+            實務上曾發生，租期五年的租約，在租期跑一年後就提前終止，但仍被國稅局依據原五年的租期課徵房東租賃所得。
           </p>
-          
-          <!-- 例一 -->
-          <div class="calc-example">
-            <div class="calc-example-title">
-              <i class="fa-solid fa-hand-holding-dollar"></i> 例一：月租金 4 萬元含稅（房東同意自負稅費）
-            </div>
-            <p style="font-size: 14px; color: #666; margin-bottom: 10px;">房客直接以 4 萬元作為計算基準進行扣繳。</p>
-            <div class="calc-item">
-              <span>1. 租金扣繳稅款 (10%)</span>
-              <span>＝ 40000 × 10% ＝ <strong>4000 元</strong></span>
-            </div>
-            <div class="calc-item">
-              <span>2. 健保補充保費 (2.11%)</span>
-              <span>＝ 40000 × 2.11% ＝ <strong>844 元</strong></span>
-            </div>
-            <div class="calc-total">
-              <strong>房客每月實際給付給房東金額：</strong><br>
-              ＝ 40000元 — 4000元 — 844元 ＝ <span class="highlight-text" style="font-size: 18px;">35,156 元</span>
-            </div>
-          </div>
-
-          <!-- 例二 -->
-          <div class="calc-example" style="margin-top: 25px;">
-            <div class="calc-example-title">
-              <i class="fa-solid fa-hand-holding-usd"></i> 例二：月租金 4 萬元不含稅（房東要求實拿 4 萬元）
-            </div>
-            <p style="font-size: 14px; color: #666; margin-bottom: 10px;">國稅局視扣繳金額亦為房東之所得，需使用「倒算法」算出實際租賃所得總額。</p>
-            <div class="info-box" style="margin-top: 0; margin-bottom: 12px; padding: 10px 15px;">
-              <div class="info-box-title" style="margin-bottom: 4px;"><i class="fa-solid fa-star"></i> 速算法：</div>
-              <p>實際月租金 ＝ 實拿月租金額 ÷ <strong>0.8789</strong></p>
-            </div>
-            <p style="margin-bottom: 12px;">房東每月實拿 40,000 元，其實際月租金（所得總額）為 <strong>45,511 元</strong> (=40000元÷0.8789)。</p>
-            <div class="calc-item">
-              <span>1. 租金扣繳稅款 (10%)</span>
-              <span>＝ 45511 × 10% ＝ <strong>4551 元</strong></span>
-            </div>
-            <div class="calc-item">
-              <span>2. 健保補充保費 (2.11%)</span>
-              <span>＝ 45511 × 2.11% ＝ <strong>960 元</strong></span>
-            </div>
-            <div class="calc-total">
-              <strong>房客每月實際給付給房東金額：</strong><br>
-              ＝ 45511元 — 4551元 — 960元 ＝ <span class="highlight-text" style="font-size: 18px;">40,000 元</span> (即房東實拿)
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 問題三區塊 -->
-      <section class="section-block">
-        <h2 class="section-title">
-          <i class="fa-solid fa-user-check"></i> 問題三：誰負責繳納？期限與方法？
-        </h2>
-        <div class="section-content">
-          <ul class="custom-list">
-            <li><strong>負責申報義務人：</strong>是由<span class="highlight-text">房客（承租人）</span>負責扣繳與申報「租金扣繳稅款」及「健保補充保費」（依據所得稅法與健保法規定）。房東僅為所得人。</li>
-            <li><strong>繳納期限：</strong></li>
-          </ul>
-          
-          <table class="fee-table" style="margin-top: 5px;">
-            <tr>
-              <th style="width: 40%; text-align: center; vertical-align: middle;">項目</th>
-              <th style="text-align: center; vertical-align: middle;">繳納期限</th>
-            </tr>
-            <tr>
-              <td>租金扣繳稅款</td>
-              <td>付租日之<span class="highlight-text">次月 10 號</span></td>
-            </tr>
-            <tr>
-              <td>二代健保補充保費</td>
-              <td>付租日之<span class="highlight-text">次月月底</span></td>
-            </tr>
-          </table>
-          
-          <p style="margin-top: 15px;">
-            <strong>繳納方法：</strong><br>
-            房客於每月付租金給房東時，應先自租金中預先扣下上述兩筆費用，並依照規定列印繳款書至金融機構或便利商店繳納。
-          </p>
-          
-          <div class="info-box" style="padding: 12px 18px;">
-            <p>
-              1. <strong>列印扣繳稅款繳款書：</strong>請至財政部稅務入口網「各類所得扣繳稅額繳款書」列印。
-              (<a href="#" target="_blank">點我前往教學連結</a>)
-            </p>
-            <p style="margin-top: 6px;">
-              2. <strong>列印補充保費繳款書：</strong>請至健保署「2-11補充保險費繳款書列印或郵寄申請(免憑証)」列印。
-              (<a href="#" target="_blank">點我前往教學連結</a>)
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- 問題四區塊 -->
-      <section class="section-block">
-        <h2 class="section-title">
-          <i class="fa-solid fa-gavel"></i> 問題四：不繳納會有什麼罰則？
-        </h2>
-        <div class="section-content">
           <p>
-            若未依法履行扣繳與申報義務，法律裁罰的對象是「扣繳義務人」，即<span class="highlight-text">「承租人（房客）」</span>。
+            為免沒有收租金，卻還要繳稅的爭議，提醒若有提前終止租約情形，房東與房客雙方<strong>一定要簽訂書面終止契約</strong>。
           </p>
           
-          <div class="warning-box" style="margin-top: 20px;">
-            <div class="warning-box-title"><i class="fa-solid fa-circle-exclamation"></i> 罰則趨勢：</div>
-            <p><strong>未扣繳「租金扣繳稅款」：</strong><br>最高可處房客應扣繳金額之<span class="highlight-text">三倍</span>罰鍰（所得稅法第114條）。</p>
-            <p style="margin-top: 10px;"><strong>未扣繳「健保補充保費」：</strong><br>最高可處房客應扣繳金額之<span class="highlight-text">三倍</span>罰鍰（健保法第85條）。</p>
+          <div class="info-box" style="border-left-color: #d9534f; background-color: #fff5f5; padding: 15px;">
+            <p style="font-weight: 600; color: #d9534f; margin: 0; font-size: 15px;">
+              👉 簽訂書面終止協議，以完整<span class="highlight-text">留存證據</span>，避免未來產生稅務糾紛。
+            </p>
           </div>
-          
-          <p style="font-size: 14px; color: #718096; margin-top: 15px; border-top: 1px solid #eee; padding-top: 10px;">
-            * 相關法律規定請依主管機關最新公告為準。
-          </p>
         </div>
       </section>
 
     </div>
   </article>
-</main>
+  </main>
 
   <!-- 5. Footer 頁尾 (保持預留) -->
   <div id="footer-container"></div>
  
   <script>
-      // 載入 Header (保持預留，假設透過 JS 載入)
+      // 載入 Header (保持預留)
       fetch('header.html')
         .then(response => response.text())
         .then(data => {
           document.getElementById('header-container').innerHTML = data;
         });
 
-      // 載入 Footer (保持預留，假設透過 JS 載入)
+      // 載入 Footer (保持預留)
       fetch('footer.html')
         .then(response => response.text())
         .then(data => {
           document.getElementById('footer-container').innerHTML = data;
         });
-    </script>
+  </script>
 </body>
 </html>
