@@ -45,15 +45,15 @@
 
   /* 強調色塊：判決結果 */
   .verdict-box {
-    background-color: #dff0d8;
-    border-left: 5px solid #3c763d;
+    background-color: #e0f1f7;
+    border-left: 5px solid #2e698e;
     padding: 20px;
     margin: 25px 0;
     border-radius: 0 4px 4px 0;
   }
 
   .verdict-box h3 {
-    color: #3c763d;
+    color: #236887;
     margin: 0 0 10px 0;
     font-size: 1.2em;
   }
