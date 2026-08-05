@@ -18,9 +18,11 @@
   }
   .calc-card-wrapper {
       width: 100%;
-      right: auto;
-      max-width: 600px; /* 設置最大寬度，使其不會太寬 */
+      right: auto;  
+      max-width: 800px; /* 設置最大寬度，使其不會太寬 */
       margin: 0 ;
+      margin-top: 15px;
+      margin-bottom: 15px; /* 標題下方的額外邊距 */
     }
 
     .calc-notes {
@@ -369,9 +371,18 @@
           <span id="resTotalFee">0 元</span>
         </div>
       </div>
+      <div class="calc-card-wrapper">
+        <ul class="calc-notes">
+          <li>註：交付之每份公證書正本所應加收部分張數合計，超過部分(契約書逾四頁者)，每張加收50元。</li>
+          <li>※本程式僅提供公證費試算功能，實際公證費應以公證時依法核定為準，對照公證費用標準表之「公證書並載明逕受強制執行」欄位。</li>
+        </ul>
+      </div>
     </div>
+
+    
   </main>
 
+  
   <div class="floating-socials">
     <a href="#" class="social-btn btn-fb" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
     <a href="#" class="social-btn btn-line" title="LINE"><i class="fa-brands fa-line"></i></a>
