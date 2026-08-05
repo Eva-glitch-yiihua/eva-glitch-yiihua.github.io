@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>房屋租約公證 - 民間公證人 三民公證所</title>
+  <!-- 引入 FontAwesome 圖示庫 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<style>
+
+.full-width-container {
+  width: 100%;
+  padding: 30px 40px;
+  box-sizing: border-box;
+}
+
+.full-width-card {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  border: 1px solid #eaeaea;
+  width: 100%;
+}
+
+.article-title {
+  font-size: 32px;
+  color: #0066cc;
+  border-bottom: 2px solid #0066cc;
+  padding-bottom: 12px;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+/* 橫向網格排列 (PC 上預設為兩欄並排) */
+.horizontal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 欄橫向並排 */
+  gap: 30px; /* 區塊間距 */
+}
+
+/* 區塊樣式 */
+.section-block {
+  background: #fafafa;
+  padding: 25px;
+  border-radius: 8px;
+  border: 1px solid #f0f0f0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 費用計算等較寬內容，跨滿兩欄 */
+.horizontal-grid .full-width-item {
+  grid-column: span 2;
+}
+
+.section-title {
+  font-size: 20px;
+  color: #1a252f;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+}
+
+.section-title i {
+  color: #0066cc;
+}
+
+.section-content {
+  font-size: 15px;
+  color: #4a5568;
+  line-height: 1.7;
+  flex-grow: 1;
+}
+
+.highlight-text {
+  color: #d9534f;
+  font-weight: 600;
+}
+
+/* 提示框 */
+.info-box {
+  background-color: #f0f7ff;
+  border-left: 4px solid #0066cc;
+  padding: 14px 18px;
+  border-radius: 4px;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.warning-box {
+  background-color: #fff8f0;
+  border-left: 4px solid #f37023;
+  padding: 14px 18px;
+  border-radius: 4px;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.info-box-title, .warning-box-title {
+  font-weight: bold;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.info-box-title { color: #0066cc; }
+.warning-box-title { color: #f37023; }
+
+/* 條列清單 */
+.custom-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0;
+}
+
+.custom-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+}
+
+.custom-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #0066cc;
+  font-weight: bold;
+}
+
+/* 費用表格 */
+.fee-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  font-size: 15px;
+  background: #ffffff;
+}
+
+.fee-table th, .fee-table td {
+  border: 1px solid #e2e8f0;
+  padding: 12px 15px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.fee-table th {
+  background-color: #f7fafc;
+  color: #2d3748;
+  font-weight: 600;
+}
+
+.fee-table ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.fee-table li {
+  margin-bottom: 6px;
+}
+
+.fee-table li:last-child {
+  margin-bottom: 0;
+}
+
+/* 響應式：螢幕較小時自動退回單欄直向呈現 */
+@media (max-width: 992px) {
+  .horizontal-grid {
+    grid-template-columns: 1fr; /* 單欄 */
+  }
+  .horizontal-grid .full-width-item {
+    grid-column: span 1;
+  }
+  .full-width-container {
+    padding: 15px;
+  }
+  .full-width-card {
+    padding: 20px;
+  }
+}
+</style>
+<body>
+
+  <!-- 1. Header 頁首導覽 -->
+  <div id="header-container"></div>
+
+  <!-- 2. Hero Banner 與橫幅標題 -->
+  <section class="hero-banner">
+    <h1 class="hero-title">公證效力及費用與法院相同</h1>
+  </section>
+
+  <!-- 麵包屑導航 (Breadcrumb) -->
+  <div class="breadcrumb-container">
+    <a href="#">首頁</a> 
+  </div>
+
+  <!-- 3. 主要內容區域 -->
+  <main class="full-width-container">
+  <article class="full-width-card">
+    <h1 class="article-title">房屋租約公證</h1>
+
+    <!-- 橫向網格容器：將各區塊並排呈現 -->
+    <div class="horizontal-grid">
+      
+      <!-- 區塊 1：優點 (滿版跨欄) -->
+      <section class="section-block full-width-item">
+        <h2 class="section-title">
+          <i class="fa-solid fa-house-circle-check"></i> 租約辦理公證的四大優點
+        </h2>
+        <div class="section-content">
+          <ul class="custom-list">
+            <li><strong>確認簽約人身分：</strong>本所公證人會核對雙方的身分證件是否為真正，避免用假名、冒名簽約，將來無法保障權益！</li>
+            <li><strong>避免訴訟、省錢省力：</strong>房屋租約公證有約定強制執行條款，對於下列情形，得不經訴訟，直接拿公證書向法院民事執行處聲請強制執行（公證法第13條）：
+              <ul style="list-style-type: disc; margin-left: 20px; margin-top: 8px; margin-bottom: 8px; color: #555;">
+                <li>租賃期限屆滿時，房客拒絕搬出房屋，房東得以公證書聲請強制執行返還房屋。</li>
+                <li>房客欠租、拒付違約金，房東得以公證書聲請強制執行要回租金、違約金。</li>
+                <li>房東無故不還押租金，房客得以公證書聲請強制執行要回押租金。</li>
+              </ul>
+            </li>
+            <li><strong>由律師資格的公證人代擬契約，保障權益：</strong>本所兩位公證人均為台大法學碩士，由律師資格轉任，提供您合法、有效、周全的租約範本，保障您的權益！</li>
+            <li><strong>租約超過五年，有公證才能「買賣不破租賃」：</strong>租期超過五年的租約若沒有公證，房客無法受到「買賣不破租賃」的保障。如果屋主在租期中處分房屋，新屋主可以不租給房客，對房客沒有保障；若有公證，因為「買賣不破租賃」，就算房屋過戶，房客可以繼續承租。</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 區塊 2：比較表 (滿版跨欄) -->
+      <section class="section-block full-width-item">
+        <h2 class="section-title">
+          <i class="fa-solid fa-scale-balanced"></i> 租約「公證」vs「不公證」比較
+        </h2>
+        <div class="section-content">
+          <table class="fee-table">
+            <thead>
+              <tr>
+                <th style="width: 12%;">項目</th>
+                <th style="width: 44%; color: #0066cc;">租約經公證 <i class="fa-solid fa-check"></i></th>
+                <th style="width: 44%; color: #d9534f;">租約未經公證 <i class="fa-solid fa-xmark"></i></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>房東權益</strong></td>
+                <td>如有欠租金、違約金或租期到卻拒絕返還房屋情形，不必經訴訟，<strong>得直接以公證書聲請強制執行</strong>。</td>
+                <td>若欠租金、拒絕返還房屋或未給付違約金，必須經冗長訴訟且獲得勝訴判決確定後，始得聲請強制執行。</td>
+              </tr>
+              <tr>
+                <td><strong>房客權益</strong></td>
+                <td>
+                  <ul>
+                    <li>租期屆滿後出租人未返還押租金，免經訴訟，得直接以公證書聲請強制執行。</li>
+                    <li>租賃期間，租賃物若經轉賣或法拍，租約不受影響(買賣不破租賃)。</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul>
+                    <li>租賃期限超過五年或未定期限者，新屋主如要求搬遷，承租人租賃權恐無法受保障。</li>
+                    <li>租期屆滿後出租人若拒絕返還押租金，必須透過冗長訴訟程序後，始得聲請強制執行。</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>費用比較</strong></td>
+                <td>
+                  <ul>
+                    <li>約定逕受強制執行之公證費用為 1,500 元起，視租金及房屋課稅現值而定。</li>
+                    <li>公證費僅約為裁判費的 10%。</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul>
+                    <li>存證信函費用、律師費 (一個審級至少 6 萬元)、訴訟費及鑑定費等，合計至少十餘萬元。</li>
+                    <li>訴訟期間無法出租之租金損失。</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>救濟程序</strong></td>
+                <td>
+                  <ul>
+                    <li>無須訴訟，直接以公證書聲請強制執行，執行費用由被執行者負擔。</li>
+                    <li>強制執行過程僅需約一個月左右，迅速便利，可防脫產。</li>
+                  </ul>
+                </td>
+                <td>須先提起民事訴訟，經三個審級判決確定，歷時半年至數年不等。</td>
+              </tr>
+              <tr>
+                <td><strong>租稅問題</strong></td>
+                <td>
+                  <ul>
+                    <li>出租人以租金收入的 57% 申報為租賃所得。</li>
+                    <li>非供營業用之承租人每年有 12 萬元租金的所得稅扣除額；若供營業用則全部租金可申報為營業費用。</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul>
+                    <li>出租人若逃稅，一經查獲，除應補稅外，並應受罰鍰。</li>
+                    <li>承租人若用匯款紀錄等，檢舉出租人有短漏報租金情形，檢舉案若確認屬實成案，檢舉人可領到最高上限 480 萬元的檢舉獎金。</li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 區塊 3：費用計算 (滿版跨欄) -->
+      <section class="section-block full-width-item">
+        <h2 class="section-title">
+          <i class="fa-solid fa-calculator"></i> 房屋租約公證費如何計算？
+        </h2>
+        <div class="section-content">
+          <div class="info-box">
+            <div class="info-box-title"><i class="fa-solid fa-circle-info"></i> 計算標準（比較二個計算標準，取其高來計算公證費用）</div>
+            <p style="margin-bottom: 5px;"><strong>計算標準(一)：</strong>總租金 + 押金</p>
+            <p><strong>計算標準(二)：</strong>房屋課稅現值 + 押金</p>
+          </div>
+
+          <div style="margin-top: 20px; padding-bottom: 15px; border-bottom: 1px dashed #ccc;">
+            <p><strong><i class="fa-solid fa-caret-right" style="color: #0066cc;"></i> 例 1：</strong>租期一年、租金每月 1 萬元、押金 2 萬元的房屋租約，房屋課稅現值為 45 萬元。</p>
+            <ul class="custom-list" style="margin-left: 10px;">
+              <li>計算標準(一)：租金 1 萬元 ✕ 12 個月 + 押金 2 萬元 ＝ <span class="highlight-text">14 萬元</span></li>
+              <li>計算標準(二)：房屋課稅現值 45 萬元 + 押金 2 萬元 ＝ 45+2 ＝ <span class="highlight-text">47 萬元</span></li>
+            </ul>
+            <p style="padding-left: 34px; color: #0066cc; font-weight: 600; margin-top: 10px;">
+              👉 比較二個計算標準，以較高之計算標準(二)＝47 萬元來計算。<br>
+              對照公證費用標準表，「20萬至50萬元」之公證書並載明逕受強制執行之欄位，公證費用為 <strong>3,000 元</strong>。
+            </p>
+          </div>
+
+          <div style="margin-top: 20px;">
+            <p><strong><i class="fa-solid fa-caret-right" style="color: #0066cc;"></i> 例 2：</strong>租期五年、租金每月 1 萬元、押金 2 萬元的房屋租約，房屋課稅現值為 45 萬元。</p>
+            <ul class="custom-list" style="margin-left: 10px;">
+              <li>計算標準(一)：租金 1 萬元 ✕ 60 個月 + 押金 2 萬元 ＝ <span class="highlight-text">62 萬元</span></li>
+              <li>計算標準(二)：房屋課稅現值 45 萬元 + 押金 2 萬元 ＝ 45+2 ＝ <span class="highlight-text">47 萬元</span></li>
+            </ul>
+            <p style="padding-left: 34px; color: #0066cc; font-weight: 600; margin-top: 10px;">
+              👉 比較二個計算標準，以較高之計算標準(一)＝62 萬元來計算。<br>
+              對照公證費用標準表，「逾50萬至100萬元」之公證書並載明逕受強制執行之欄位，公證費用為 <strong>4,500 元</strong>。
+            </p>
+          </div>
+
+          <div class="warning-box">
+            <div class="warning-box-title"><i class="fa-solid fa-lightbulb"></i> 補充說明</div>
+            <p>土地租約、房屋無償借用、土地無償借用之公證費用，計算方式皆同上。</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </article>
+</main>
+
+  <div id="footer-container"></div>
+ 
+  <script>
+      // 載入 Header
+      fetch('header.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('header-container').innerHTML = data;
+        });
+
+      // 載入 Footer
+      fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('footer-container').innerHTML = data;
+        });
+    </script>
+</body>
+</html>
