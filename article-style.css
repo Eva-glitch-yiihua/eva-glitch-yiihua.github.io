@@ -6,11 +6,11 @@
 .full-width-container {
   width: 100%;
   max-width: 800px; /* ★ 限制最大寬度，讓版面變窄 */
-  margin: 0 auto;   /* ★ 讓整個區塊在畫面上置中 */
+  
   padding: 30px 40px;
   box-sizing: border-box;
   font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
-  background-color: #f4f4f4; /* 若不需要背景色可移除 */
+  background-color: #f4f4f4;  /* 若不需要背景色可移除 */
 }
 
 .full-width-card {
