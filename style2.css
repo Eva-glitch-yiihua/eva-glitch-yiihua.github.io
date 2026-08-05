@@ -2,16 +2,15 @@
    文章版面專用樣式 (article-style.css)
    ========================================== */
 
-/* 全螢幕滿版容器，左右保留安全邊距 */
+/* 1. 全螢幕滿版容器與卡片 */
 .full-width-container {
   width: 100%;
   padding: 30px 40px;
   box-sizing: border-box;
   font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
-  background-color: #f4f4f4; /* 頁面背景色 */
+  background-color: #f4f4f4; /* 若不需要背景色可移除 */
 }
 
-/* 滿版卡片本體 */
 .full-width-card {
   background: #ffffff;
   padding: 40px;
@@ -22,7 +21,7 @@
   box-sizing: border-box;
 }
 
-/* 文章主標題樣式 */
+/* 2. 標題樣式 */
 .article-title {
   font-size: 32px;
   color: #0066cc;
@@ -33,14 +32,19 @@
   margin-top: 0;
 }
 
-/* 網格容器：單欄排列，使所有區塊上下堆疊 */
+/* 3. 網格容器 (設定為單欄，全部上下排列) */
 .horizontal-grid {
   display: grid;
-  grid-template-columns: 1fr; /* 單欄排列 */
+  grid-template-columns: 1fr; /* 單欄排列，取消左右並排 */
   gap: 30px; /* 區塊間距 */
 }
 
-/* 區塊樣式 (灰底) */
+/* 若未來有需要跨欄的項目，設定為佔滿可用空間 */
+.horizontal-grid .full-width-item {
+  grid-column: 1 / -1; 
+}
+
+/* 4. 區塊樣式 (灰底) */
 .section-block {
   background: #fafafa;
   padding: 25px;
@@ -51,7 +55,6 @@
   box-sizing: border-box;
 }
 
-/* 區塊小標題 */
 .section-title {
   font-size: 20px;
   color: #1a252f;
@@ -63,82 +66,55 @@
   margin-top: 0;
 }
 
-/* 區塊小標題圖示顏色 */
 .section-title i {
   color: #0066cc;
 }
 
-/* 區塊內文 */
 .section-content {
   font-size: 15px;
   color: #4a5568;
-  line-height: 1.8; /* 增加行高提升閱讀率 */
+  line-height: 1.7; /* 統一字距 */
   flex-grow: 1;
 }
 
-/* 區塊內文段落間距 */
-.section-content p {
-  margin-top: 0;
-  margin-bottom: 12px;
-}
-
-/* 區塊內文最後一個段落不留底邊距 */
-.section-content p:last-child {
-  margin-bottom: 0;
-}
-
-/* 高亮文字 */
 .highlight-text {
   color: #d9534f;
   font-weight: 600;
 }
 
-/* 藍色提示框 (Info Box) */
+/* 5. 提示與警告框 (Info / Warning Box) */
 .info-box {
   background-color: #f0f7ff;
   border-left: 4px solid #0066cc;
-  padding: 16px 20px;
+  padding: 14px 18px;
   border-radius: 4px;
   margin-top: 15px;
-  margin-bottom: 15px;
   font-size: 14px;
   color: #333;
 }
 
-/* 提示框標題 */
-.info-box-title {
-  font-weight: bold;
-  margin-bottom: 8px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 15px;
-  color: #0066cc;
-}
-
-/* 橘色警告框 (Warning Box) - 若其他頁面會用到可保留 */
 .warning-box {
   background-color: #fff8f0;
   border-left: 4px solid #f37023;
-  padding: 16px 20px;
+  padding: 14px 18px;
   border-radius: 4px;
   margin-top: 15px;
-  margin-bottom: 15px;
   font-size: 14px;
   color: #333;
 }
 
-.warning-box-title {
+.info-box-title, .warning-box-title {
   font-weight: bold;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 15px;
-  color: #f37023;
 }
 
-/* 條列清單 (Custom List) */
+.info-box-title { color: #0066cc; }
+.warning-box-title { color: #f37023; }
+
+/* 6. 條列清單 */
 .custom-list {
   list-style: none;
   padding-left: 0;
@@ -147,42 +123,72 @@
 
 .custom-list li {
   position: relative;
-  padding-left: 28px;
-  margin-bottom: 10px;
-  line-height: 1.6;
+  padding-left: 24px;
+  margin-bottom: 8px;
 }
 
-/* 清單勾選符號樣式 */
 .custom-list li::before {
   content: "✓";
   position: absolute;
   left: 0;
   color: #0066cc;
   font-weight: bold;
-  font-size: 16px;
+}
+
+/* 7. 表格樣式 (新加入的部分) */
+.fee-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  font-size: 15px;
+  background: #ffffff;
+}
+
+.fee-table th, .fee-table td {
+  border: 1px solid #e2e8f0;
+  padding: 12px 15px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.fee-table th {
+  background-color: #f7fafc;
+  color: #2d3748;
+  font-weight: 600;
+}
+
+.fee-table ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.fee-table li {
+  margin-bottom: 6px;
+}
+
+.fee-table li:last-child {
+  margin-bottom: 0;
 }
 
 /* ==========================================
-   響應式設計：行動裝置適應
+   響應式設計 (平板/手機版)
    ========================================== */
 @media (max-width: 992px) {
-  /* 縮小容器邊距 */
+  /* 確保行動裝置下也保持單欄 */
+  .horizontal-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .horizontal-grid .full-width-item {
+    grid-column: span 1;
+  }
+  
+  /* 縮小容器與卡片邊距，爭取更多閱讀空間 */
   .full-width-container {
     padding: 15px;
   }
   
-  /* 縮小卡片內邊距 */
   .full-width-card {
-    padding: 25px 20px;
-  }
-  
-  /* 調整文章標題字號 */
-  .article-title {
-    font-size: 26px;
-  }
-  
-  /* 調整區塊小標題字號 */
-  .section-title {
-    font-size: 18px;
+    padding: 20px;
   }
 }
