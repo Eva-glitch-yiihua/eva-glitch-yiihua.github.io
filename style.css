@@ -241,6 +241,7 @@
     .dropdown-menu {
         display: none;
         position: absolute;
+        width: 320px;
         top: 100%; /* 出現在按鈕正下方 */
         left: 0;
         min-width: 160px;
@@ -250,17 +251,19 @@
         padding: 8px 0;
         z-index: 1000;
         border: 1px solid #e1e8ed;
+        
     }
 
     /* 下拉選單內的子連結 */
     .dropdown-menu a {
         color: #333333;
-        padding: 10px 16px;
+        padding: 12px 15px;
         text-decoration: none;
         display: block;
         font-size: 14px;
-        white-space: nowrap;
+        white-space: normal; /* 允許換行 */
         transition: background-color 0.2s, color 0.2s;
+        border-bottom: 1px solid #eee; /* 建議加上淡淡的分隔線，區分不同項目 */
     }
 
     /* 當滑鼠移入下拉子項目時 */
@@ -279,3 +282,8 @@
         transform: rotate(180deg);
         transition: transform 0.3s;
     }
+    .dropdown-menu a:last-child {
+      border-bottom: none;
+    }
+
+    
