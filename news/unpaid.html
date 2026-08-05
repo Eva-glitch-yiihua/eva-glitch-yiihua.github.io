@@ -6,8 +6,9 @@
   <title>未繳納「租金10%扣繳稅款」房客竟遭判刑4個月 - 民間公證人 三民公證所</title>
   <!-- 引入 FontAwesome 圖示庫 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
-</head>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="story-style.css">
+<!-- </head>
 <style>
   main {
     max-width: 800px;
@@ -120,7 +121,7 @@
     padding-left: 20px;
     margin-top: 10px;
   }
-</style>
+</style> -->
 <body>
 
   <!-- 1. Header 頁首導覽 -->
@@ -183,14 +184,14 @@
  
   <script>
       // 載入 Header
-      fetch('header.html')
+      fetch('../header.html')
         .then(response => response.text())
         .then(data => {
           document.getElementById('header-container').innerHTML = data;
         });
 
       // 載入 Footer
-      fetch('footer.html')
+      fetch('../footer.html')
         .then(response => response.text())
         .then(data => {
           document.getElementById('footer-container').innerHTML = data;
