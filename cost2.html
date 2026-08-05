@@ -18,6 +18,7 @@
 
     body {
       background-color: #fdfaf7;
+      
       color: #333;
     }
 
@@ -108,7 +109,7 @@
 
     /* 3. 主要內容區域 - 修改為單欄滿版直排 */
     .container {
-      max-width: 1200px;
+      max-width: 800px;
       margin: 20px auto 60px;
       padding: 0 20px;
     }
@@ -281,29 +282,35 @@
 
     /* 下拉選單本體 */
     .dropdown-menu {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      min-width: 160px;
-      background-color: #ffffff;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-      border-radius: 6px;
-      padding: 8px 0;
-      z-index: 1000;
-      border: 1px solid #e1e8ed;
+        display: none;
+        position: absolute;
+        width: 250px;
+        top: 100%; /* 出現在按鈕正下方 */
+        left: 0;
+        min-width: 160px;
+        background-color: #ffffff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        border-radius: 6px;
+        padding: 8px 0;
+        z-index: 1000;
+        border: 1px solid #e1e8ed;
+        
     }
 
+    /* 下拉選單內的子連結 */
     .dropdown-menu a {
-      color: #333333;
-      padding: 10px 16px;
-      text-decoration: none;
-      display: block;
-      font-size: 14px;
-      white-space: nowrap;
-      transition: background-color 0.2s, color 0.2s;
+        color: #333333;
+        padding: 12px 15px;
+        text-decoration: none;
+        display: block;
+        font-size: 14px;
+        white-space: normal; /* 允許換行 */
+        transition: background-color 0.2s, color 0.2s;
+        border-bottom: 1px solid #eee; /* 建議加上淡淡的分隔線，區分不同項目 */
     }
-
+    .dropdown-menu a:last-child {
+      border-bottom: none;
+    }
     .dropdown-menu a:hover {
       background-color: #eaf2f8;
       color: #0066cc;
@@ -331,9 +338,9 @@
   <div id="header-container"></div>
 
   <!-- 2. Hero Banner 與橫幅標題 -->
-  <section class="hero-banner">
+  <!-- <section class="hero-banner">
     <h1 class="hero-title">收費標準</h1>
-  </section>
+  </section> -->
 
   <!-- 麵包屑導航 (Breadcrumb) -->
   <div class="breadcrumb-container">

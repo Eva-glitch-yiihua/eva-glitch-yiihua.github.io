@@ -18,6 +18,7 @@
   }
   .calc-card-wrapper {
       width: 100%;
+      right: auto;
       max-width: 600px; /* 設置最大寬度，使其不會太寬 */
       margin: 0 ;
     }
@@ -59,8 +60,9 @@
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     border: 1px solid #eaeaea;
-    width: 100%;
+    width: 800px;
     box-sizing: border-box;
+    margin: 0 auto
   }
 
   .calc-card h2 {
@@ -240,24 +242,19 @@
 
   <!-- 3. 主要內容區域 -->
   <main class="container">
-    <div class="calc-card-wrapper">
-      <ul class="calc-notes">
-        
-        <li>計算標準(一)：總租金+押金</li>
-        <li>計算標準(二)：房屋課稅現值+押金</li>
-        <li>兩者取高者</li>
-      </ul>
-    </div>
-
     <div class="calc-card">
       <h2>房屋租約 — 公證費線上試算</h2>
-
-      
-
+      <div class="calc-card-wrapper">
+          <ul class="calc-notes">
+            <li>計算標準(一)：總租金+押金</li>
+            <li>計算標準(二)：房屋課稅現值+押金</li>
+            <li>兩者取高者</li>
+          </ul>
+        </div>
       <div class="calc-form">
         <!-- 月租金 -->
         <div class="form-group">
-          <label for="monthlyRent">月租金：</label>
+          <label for="monthlyRent">請輸入月租金：</label>
           <div class="input-row">
             <input type="number" id="monthlyRent" min="0" placeholder="請輸入月租金" oninput="autoCalcTotalRent()">
             <span class="unit">元</span>

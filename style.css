@@ -241,7 +241,7 @@
     .dropdown-menu {
         display: none;
         position: absolute;
-        width: 320px;
+        width: 250px;
         top: 100%; /* 出現在按鈕正下方 */
         left: 0;
         min-width: 160px;
@@ -265,6 +265,10 @@
         transition: background-color 0.2s, color 0.2s;
         border-bottom: 1px solid #eee; /* 建議加上淡淡的分隔線，區分不同項目 */
     }
+    .dropdown-menu a:last-child {
+      border-bottom: none;
+    }
+
 
     /* 當滑鼠移入下拉子項目時 */
     .dropdown-menu a:hover {
@@ -282,8 +286,5 @@
         transform: rotate(180deg);
         transition: transform 0.3s;
     }
-    .dropdown-menu a:last-child {
-      border-bottom: none;
-    }
-
+    
     
