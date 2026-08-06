@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>判決要旨 - 民間公證人 三民公證所</title>
+  <!-- 引入 FontAwesome 圖示庫 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="story-style.css">
+</head>
+<style>
+    
+   .case-title {
+     margin-bottom: 10px;  
+    }
+    h1.case-title {
+      color: black !important; 
+    }
+    /* 讓標題內的連結繼承原本標題的顏色，並移除底線 */
+    .case-title a {
+    text-decoration: none; /* 移除底線 */
+    color: inherit;        /* 繼承 h1 的文字顏色 */
+    }
+
+    /* 當滑鼠游標移過去時，可以加一點效果（例如變色或加底線，可依需求設定） */
+    .case-title a:hover {
+    color: #000000;        /* 換成您喜歡的顏色 */
+    /* text-decoration: underline; */ /* 如果需要滑鼠移過去顯示底線可以取消此行註解 */
+    }
+    h2.section-title {
+      color: black !important;
+        text-align: left;
+    }
+    h2.section-title::before {
+      display: none !important;
+    }
+</style>
+
+<body>
+
+  <!-- 1. Header 頁首導覽 -->
+  <div id="header-container"></div>
+
+  <!-- 麵包屑導航 (Breadcrumb) -->
+  <div class="breadcrumb-container">
+    <a href="../home.html">首頁</a> &gt; <span>判決要旨</span>
+
+  <main>
+    <h1 class="case-title"><a href="case1.html">《最高法院判決要旨》租賃物現況雖不符合建築技術規則，但無使用上安全之瑕疵，承租人得否主張解除租約?</a></h1>
+    <h2 class="section-title">租賃物之現況未符合於建築技術成規規定，但無使用上安全之瑕疵，承租人得否主張解除契約並請求返還租金與擔保金?</h2>
+    <img src="../p/archives-1.jpg" alt="判決相關圖片說明" class="case-photo">
+    <h1 class="case-title"><a href="case2.html">《最高法院判例要旨》因不可歸責於雙方事由致租賃物毀損後，房東有無修繕義務？</a></h1>
+    <img src="../p/archives-21.jpg" alt="判決相關圖片說明" class="case-photo">
+    <h1 class="case-title"><a href="case3.html">《最高法院判決要旨》房東違反修繕義務，房客得否拒付租金？</a></h1>
+    <img src="../p/archives-2.jpg" alt="判決相關圖片說明" class="case-photo">
+    
+    
+  </main>
+
+  <!-- Footer 頁尾 -->
+  <div id="footer-container"></div>
+ 
+  <script>
+      // 載入 Header
+      fetch('../header.html')
+        .then(response => {
+          if (!response.ok) throw new Error('Header 載入失敗');
+          return response.text();
+        })
+        .then(data => {
+          document.getElementById('header-container').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading header:', error));
+
+      // 載入 Footer
+      fetch('../footer.html')
+        .then(response => {
+          if (!response.ok) throw new Error('Footer 載入失敗');
+          return response.text();
+        })
+        .then(data => {
+          document.getElementById('footer-container').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading footer:', error));
+  </script>
+</body>
+</html>

@@ -109,3 +109,11 @@
     padding-left: 20px;
     margin-top: 10px;
   }
+
+  img.case-photo {
+      max-width: 80%;       /* 讓圖片寬度最多不超過螢幕/容器，確保手機版不會破版 */
+      height: auto;          /* 保持圖片原本的長寬比例不變形 */
+      display: block;        /* 讓圖片獨立佔用一行 */
+      margin: 20px auto 50px;   
+      border-radius: 8px;    /* (可選) 讓圖片四角變成微圓角，看起來比較有質感 */
+    }
