@@ -288,7 +288,7 @@
         <div class="form-group">
           <label for="deposit">押金：</label>
           <div class="input-row">
-            <input type="number" id="deposit" min="0" placeholder="請輸入押金金額" value="0">
+            <input type="number" id="deposit" min="0" placeholder="請輸入押金金額" >
             <span class="unit">元</span>
           </div>
         </div>
@@ -308,18 +308,18 @@
           <label>是否約定「附加逕受強制執行」？</label>
           <div class="radio-group">
             <label class="radio-label"><input type="radio" name="execution" value="yes" checked> 是 (費用加收 50%)</label>
-            <label class="radio-label"><input type="radio" name="execution" value="no"> 否</label>
+            <!-- <label class="radio-label"><input type="radio" name="execution" value="no"> 否</label> -->
           </div>
         </div>
 
         <!-- 夜間/假日辦理 -->
         <div class="form-group">
-          <label>是否於假日或夜間辦理公證？</label>
-          <div class="radio-group">
+          <!--<label>*說明：辦理時間於平日上班時間 9:00-17:00</label>
+           <div class="radio-group">
             <label class="radio-label"><input type="radio" name="holiday" value="yes"> 是</label>
             <label class="radio-label"><input type="radio" name="holiday" value="no" checked> 否</label>
-          </div>
-          <p class="note">*說明：夜間 (17:30 後) 或例假日辦理，費用加收 50% (加收最高上限為 5,000 元)。</p>
+          </div> -->
+          <p class="note">*說明：辦理時間於平日上班時間 9:00-17:00。</p> 
         </div>
 
         <button class="btn-calc" onclick="calculateFee()">開始試算公證費</button>
@@ -434,6 +434,20 @@
 
     // 主試算邏輯
     function calculateFee() {
+      // 1. 先取得使用者輸入的原始字串，並去除前後空白
+      const rentInput = document.getElementById('monthlyRent').value.trim();
+      const depositInput = document.getElementById('deposit').value.trim();
+
+      // 2. 檢查是否為空值，若為空則跳出提示並中斷執行
+      if (rentInput === '') {
+        alert("請輸入「月租金」！");
+        return; 
+      }
+      if (depositInput === '') {
+        alert("請輸入「押金」！ (若無押金請填入 0)");
+        return;
+      }
+
       const monthlyRent = Math.max(0, parseFloat(document.getElementById('monthlyRent').value) || 0);
       const years = Math.max(0, parseFloat(document.getElementById('rentYears').value) || 0);
       const months = Math.max(0, parseFloat(document.getElementById('rentMonths').value) || 0);
@@ -449,7 +463,7 @@
       }
 
       const hasExecution = document.querySelector('input[name="execution"]:checked').value === 'yes';
-      const isHoliday = document.querySelector('input[name="holiday"]:checked').value === 'yes';
+      // const isHoliday = document.querySelector('input[name="holiday"]:checked').value === 'yes';
 
       // 1. 計算標準（一）：總租金 + 押金
       const std1 = totalRent + deposit;
@@ -471,7 +485,7 @@
       //   holidayFee = Math.min(baseFee * 0.5, 5000);
       // }
 
-      const totalFee = baseFee + executionFee + holidayFee;
+      const totalFee = baseFee + executionFee ;
 
       // 5. 渲染詳細說明算式與結果
       document.getElementById('resStd1').innerText = std1.toLocaleString() + ' 元';
@@ -503,12 +517,12 @@
       }
 
       // 顯示/隱藏 假日夜間加收欄位
-      if (isHoliday) {
-        document.getElementById('holidayFeeRow').style.display = 'flex';
-        document.getElementById('resHolidayFee').innerText = holidayFee.toLocaleString() + ' 元';
-      } else {
-        document.getElementById('holidayFeeRow').style.display = 'none';
-      }
+      // if (isHoliday) {
+      //   document.getElementById('holidayFeeRow').style.display = 'flex';
+      //   document.getElementById('resHolidayFee').innerText = holidayFee.toLocaleString() + ' 元';
+      // } else {
+      //   document.getElementById('holidayFeeRow').style.display = 'none';
+      // }
 
       document.getElementById('resTotalFee').innerText = totalFee.toLocaleString() + ' 元';
       document.getElementById('resultBox').classList.add('active');
