@@ -1,0 +1,215 @@
+
+  /* ==========================================
+     長輩友善版 (大字體、高對比、清晰排版)
+  ========================================== */
+  
+  body {
+    /* 使用系統預設且易讀的黑體字 */
+    font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans TC", "微軟正黑體", sans-serif;
+    color: #111111; /* 使用極深的黑色提高對比度，不使用純黑以免刺眼 */
+    line-height: 1.8; /* 加大行距，避免文字擠在一起 */
+    font-size: 20px; /* 基礎字體放大 */
+  }
+
+  .elderly-wrapper {
+    max-width: 850px;
+    margin: 30px auto;
+    padding: 0 15px;
+  }
+
+  .main-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid #d1d5db;
+  }
+
+  /* 標題與前言 */
+  .page-title {
+    font-size: 32px;
+    color: #0056b3; /* 深藍色，易於辨識且具信任感 */
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 25px;
+    border-bottom: 3px solid #0056b3;
+    padding-bottom: 15px;
+  }
+
+  .intro-text {
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #333333;
+    font-weight: bold;
+  }
+
+  /* 強調文字 (長輩最熟悉的螢光筆效果) */
+  .highlight-yellow {
+    background-color: #fff3cd;
+    color: #856404;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 900;
+  }
+  
+  .highlight-red {
+    color: #cc0000;
+    font-weight: 900;
+  }
+
+  /* --- 步驟卡片設計 --- */
+  .step-card {
+    background: #ffffff;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 30px;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+
+  .step-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    border-bottom: 2px dashed #e5e7eb;
+    padding-bottom: 15px;
+  }
+
+  /* 大圓圈數字 */
+  .step-number {
+    background-color: #0056b3;
+    color: #ffffff;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 900;
+    flex-shrink: 0;
+  }
+
+  .step-title {
+    font-size: 26px;
+    font-weight: 900;
+    color: #0056b3;
+  }
+
+  .step-desc {
+    font-size: 22px; /* 內文再放大 */
+    color: #222222;
+  }
+
+  /* 按鈕名稱標示 (讓長輩知道要點哪裡) */
+  .btn-name {
+    color: #0056b3;
+    font-weight: 900;
+    background-color: #e6f2ff;
+    padding: 2px 8px;
+    border-radius: 6px;
+    border: 1px solid #b3d7ff;
+    display: inline-block;
+    margin: 2px 0;
+  }
+
+  /* --- 貼心提醒框 --- */
+  .notice-box {
+    margin-top: 20px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    font-size: 20px;
+  }
+
+  .notice-info {
+    background-color: #f0f8ff;
+    border-left: 6px solid #0056b3;
+    color: #004085;
+  }
+
+  .notice-danger {
+    background-color: #fff5f5;
+    border-left: 6px solid #cc0000;
+    color: #990000;
+  }
+
+  .notice-title {
+    font-size: 22px;
+    font-weight: 900;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* --- 繳費方式 --- */
+  .payment-section {
+    background: #fff8e1;
+    border: 2px solid #ffecb3;
+    border-radius: 10px;
+    padding: 30px;
+    margin-top: 40px;
+  }
+
+  .payment-title {
+    font-size: 28px;
+    font-weight: 900;
+    color: #b35900;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .payment-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .payment-list li {
+    font-size: 22px;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .payment-list li i {
+    color: #28a745;
+    font-size: 26px;
+    margin-top: 4px;
+  }
+
+  /* 手機版適應 */
+  @media (max-width: 600px) {
+    .main-card {
+      padding: 25px 15px;
+    }
+    .page-title {
+      font-size: 28px;
+    }
+    .step-card {
+      padding: 15px;
+    }
+    .step-title {
+      font-size: 24px;
+    }
+    .step-desc, .payment-list li {
+      font-size: 20px;
+    }
+    /* --- 步驟圖片設定 --- */
+  
+  }
+  .step-image {
+    width: 100%; /* 讓圖片自動填滿卡片寬度 */
+    height: auto; /* 保持圖片原本比例，不會變形 */
+    margin-top: 25px; /* 與上方文字保持舒適距離 */
+    border-radius: 8px; /* 圓角設計，看起來更柔和 */
+    border: 2px solid #e5e7eb; /* 加上淺灰色邊框，讓圖片邊界更清晰 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* 加上淡淡的陰影增加立體感 */
+    display: block; /* 確保圖片獨立佔用一行 */
+  }

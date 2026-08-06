@@ -62,7 +62,8 @@
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     border: 1px solid #eaeaea;
-    width: 800px;
+    width: 100%;
+    max-width: 800px;
     box-sizing: border-box;
     margin: 0 auto
   }
@@ -212,17 +213,23 @@
     margin-top: 14px;
   }
 
-  /* 手機版響應式 */
   @media (max-width: 768px) {
-    .calc-card-wrapper {
-      padding: 0 15px;
+    /* 您原本的設定保留... */
+    .calc-card-wrapper { padding: 0 15px; }
+    .calc-card { padding: 20px; }
+    .calc-form .radio-group { flex-direction: column; gap: 10px; }
+
+    /* 針對金額列的新增設定 */
+    .result-row { 
+      flex-direction: column; /* 改為上下排列 */
+      align-items: flex-start; /* 靠左對齊 */
+      gap: 8px; /* 標題跟金額之間加一點空隙 */
     }
-    .calc-card {
-      padding: 20px;
-    }
-    .calc-form .radio-group {
-      flex-direction: column;
-      gap: 10px;
+    
+    /* 如果金額有獨立的 class (例如 .result-value)，可以設定靠右或靠左 */
+    .result-value {
+      width: 100%;
+      text-align: left; /* 或者設為 right，看您的視覺偏好 */
     }
   }
 </style>
@@ -373,7 +380,7 @@
       </div>
       <div class="calc-card-wrapper">
         <ul class="calc-notes">
-          <li>註：交付之每份公證書正本所應加收部分張數合計，超過部分(契約書逾四頁者)，每張加收50元。</li>
+          <li>註：交付之每份公證書正本所應加收部分張數合計，<span style="color: rgb(255, 5, 5);">超過部分(契約書逾四頁者)，每張加收50元。</span></li>
           <li>※本程式僅提供公證費試算功能，實際公證費應以公證時依法核定為準，對照公證費用標準表之「公證書並載明逕受強制執行」欄位。</li>
         </ul>
       </div>
@@ -447,13 +454,25 @@
         alert("請輸入「押金」！ (若無押金請填入 0)");
         return;
       }
+      // 3. 將字串轉換為浮點數
+    const monthlyRent = parseFloat(rentInput);
+    const deposit = parseFloat(depositInput);
 
-      const monthlyRent = Math.max(0, parseFloat(document.getElementById('monthlyRent').value) || 0);
+    // 4. 檢查是否為負數、無效數字或含有小數點
+      if (isNaN(monthlyRent) || monthlyRent < 0 || !Number.isInteger(monthlyRent)) {
+        alert("月租金請輸入有效的「整數」金額（不可為負數或包含小數點）！");
+        return;
+      }
+      if (isNaN(deposit) || deposit < 0 || !Number.isInteger(deposit)) {
+        alert("押金請輸入有效的「整數」金額（不可為負數或包含小數點）！");
+        return;
+      }
+
+
+      
       const years = Math.max(0, parseFloat(document.getElementById('rentYears').value) || 0);
       const months = Math.max(0, parseFloat(document.getElementById('rentMonths').value) || 0);
-      const deposit = Math.max(0, parseFloat(document.getElementById('deposit').value) || 0);
       const taxValue = Math.max(0, parseFloat(document.getElementById('taxValue').value) || 0);
-      
       const totalMonths = (years * 12) + months;
       const totalRent = monthlyRent * totalMonths;
 
