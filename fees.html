@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>房屋租約公證費試算 - 民間公證人 三民公證所</title>
+  <title>公證費計算機 -  三民公證</title>
   <!-- 引入 FontAwesome 圖示庫 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
@@ -361,10 +361,10 @@
           <span>載明逕受強制執行加收 (50%)：</span>
           <strong id="resExecutionFee">0 元</strong>
         </div>
-        <div class="result-row" id="holidayFeeRow" style="display:none;">
+        <!-- <div class="result-row" id="holidayFeeRow" style="display:none;">
           <span>夜間/假日加收費用：</span>
           <strong id="resHolidayFee">0 元</strong>
-        </div>
+        </div> -->
 
         <div class="result-row result-total">
           <span>預估總公證費用：</span>
@@ -466,10 +466,10 @@
       const executionFee = hasExecution ? (baseFee * 0.5) : 0; // 強制執行加收 50%
 
       // 夜間/假日加成（以基本費用之 50% 計算，上限 5,000 元）
-      let holidayFee = 0;
-      if (isHoliday) {
-        holidayFee = Math.min(baseFee * 0.5, 5000);
-      }
+      // let holidayFee = 0;
+      // if (isHoliday) {
+      //   holidayFee = Math.min(baseFee * 0.5, 5000);
+      // }
 
       const totalFee = baseFee + executionFee + holidayFee;
 
