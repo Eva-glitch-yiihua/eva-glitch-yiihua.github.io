@@ -72,6 +72,16 @@
         .then(data => {
           document.getElementById('footer-container').innerHTML = data;
         });
+
+      // 抓取剛剛設定的按鈕與導覽列
+      const menuToggle = document.getElementById('menuToggle');
+      const mainNav = document.getElementById('mainNav');
+
+      // 監聽點擊事件：點下去的時候切換 active 狀態
+      menuToggle.addEventListener('click', function() {
+        mainNav.classList.toggle('active');
+      });
+      
     </script>
 </body>
 </html>
