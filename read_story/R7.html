@@ -80,6 +80,15 @@
         .then(response => response.text())
         .then(data => {
           document.getElementById('header-container').innerHTML = data;
+          const menuToggle = document.getElementById('menuToggle');
+          const mainNav = document.getElementById('mainNav');
+
+          // 確保按鈕存在後，綁定監聽點擊事件
+          if (menuToggle && mainNav) {
+            menuToggle.addEventListener('click', function() {
+              mainNav.classList.toggle('active');
+            });
+          }
         })
         .catch(error => console.error('Error loading header:', error));
 
