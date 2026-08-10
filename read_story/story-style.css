@@ -7,6 +7,7 @@
     color: #333;
     background-color: #fcfcfc;
   }
+  
 
   .case-title {
     color: #c9302c;
@@ -148,3 +149,12 @@ img.case-photo {
     margin: 60px 0;                   /* 🌟 核心：上下各空出 60px 的大距離，左右不留白 */
     width: 100%;                      /* 確保線條寬度滿版 */
   }
+  /* 🌟 重點強調文字顏色 */
+  .highlight-red {
+    color: #d9534f; /* 警告紅：適合罰單、刑責 */
+  }
+
+  .highlight-blue {
+    color: #337ab7; /* 專業藍：適合日期、法規條件 */
+  }
+
