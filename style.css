@@ -80,6 +80,7 @@
       letter-spacing: 4px;
       text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8);
       font-weight: 600;
+      text-align: center;
     }
 
     /* 麵包屑導航 */
