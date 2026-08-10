@@ -5,11 +5,14 @@
       box-sizing: border-box;
       font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
     }
+    html, body {
+      overflow-x: hidden; 
+      width: 100%;
+    }
 
     body {
       background-color: #fdfaf7;
-      color: #333;
-      
+      color: #333; 
     }
 
     /* 1. 頂部導覽列 (Header) */
