@@ -64,8 +64,18 @@
         .then(response => response.text())
         .then(data => {
           document.getElementById('header-container').innerHTML = data;
-        });
+          // ⚠️ 等上面的動作完成後，這時候網頁裡才有按鈕，現在才來抓取它們！
+          const menuToggle = document.getElementById('menuToggle');
+          const mainNav = document.getElementById('mainNav');
 
+          // 確保按鈕存在後，綁定監聽點擊事件
+          if (menuToggle && mainNav) {
+            menuToggle.addEventListener('click', function() {
+              mainNav.classList.toggle('active');
+            });
+          }
+        });
+        
       // 載入 Footer
       fetch('footer.html')
         .then(response => response.text())
@@ -73,15 +83,8 @@
           document.getElementById('footer-container').innerHTML = data;
         });
 
-      // 抓取剛剛設定的按鈕與導覽列
-      const menuToggle = document.getElementById('menuToggle');
-      const mainNav = document.getElementById('mainNav');
-
-      // 監聽點擊事件：點下去的時候切換 active 狀態
-      menuToggle.addEventListener('click', function() {
-        mainNav.classList.toggle('active');
-      });
       
+
     </script>
 </body>
 </html>

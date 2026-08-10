@@ -241,8 +241,62 @@
       border-top: 1px solid #f0f0f0;
     }
 
-    /* 響應式調整 (Mobile Adaptive) */
-    /* 🌟 取代：將原本的 @media (max-width: 768px) 換成以下這段 */
+    /* 電腦板下拉選單外層容器 */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    /* 下拉選單本體（預設隱藏） */
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        width: 250px;
+        top: 100%; /* 出現在按鈕正下方 */
+        left: 0;
+        min-width: 160px;
+        background-color: #ffffff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        border-radius: 6px;
+        padding: 8px 0;
+        z-index: 1000;
+        border: 1px solid #e1e8ed;
+        
+    }
+
+    /* 下拉選單內的子連結 */
+    .dropdown-menu a {
+        color: #333333;
+        padding: 12px 15px;
+        text-decoration: none;
+        display: block;
+        font-size: 14px;
+        white-space: normal; /* 允許換行 */
+        transition: background-color 0.2s, color 0.2s;
+        border-bottom: 1px solid #eee; /* 建議加上淡淡的分隔線，區分不同項目 */
+    }
+    .dropdown-menu a:last-child {
+      border-bottom: none;
+    }
+
+    /* 當滑鼠移入下拉子項目時 */
+    .dropdown-menu a:hover {
+        background-color: #eaf2f8; /* 淺藍色高亮 */
+        color: #0066cc;
+    }
+
+    /* 核心魔法：滑鼠移入 .dropdown 容器時，顯示下拉選單 */
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+
+    /* 滑鼠懸停時箭頭稍微旋轉（增添視覺質感） */
+    .dropdown:hover .fa-angle-down {
+        transform: rotate(180deg);
+        transition: transform 0.3s;
+    }
+    
+        /* 響應式調整 (Mobile Adaptive) */
     @media (max-width: 768px) {
       header { 
         padding: 15px 0 0 0; /* 取消左右內距，讓選單底線可以貼齊螢幕邊緣 */
@@ -290,61 +344,25 @@
       nav.active {
         display: flex;
       }
-    }
-    /* 下拉選單外層容器 */
-    .dropdown {
-        position: relative;
-        display: inline-block;
-    }
+      /* 🌟 新增：修正手機版下拉選單的排版 */
+      .dropdown {
+        width: 100%;
+        text-align: center;
+      }
 
-    /* 下拉選單本體（預設隱藏） */
-    .dropdown-menu {
-        display: none;
-        position: absolute;
-        width: 250px;
-        top: 100%; /* 出現在按鈕正下方 */
-        left: 0;
-        min-width: 160px;
-        background-color: #ffffff;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-        border-radius: 6px;
-        padding: 8px 0;
-        z-index: 1000;
-        border: 1px solid #e1e8ed;
-        
-    }
+      .dropdown-menu {
+        position: static; /* 核心魔法：取消懸浮，改為正常的網頁排版流，把下面的元素往下推 */
+        width: 100%;
+        box-shadow: none; /* 拿掉懸浮陰影 */
+        border: none;
+        border-radius: 0;
+        background-color: #f9f9f9; /* 給一點淺灰底色，區別主選單與子選單 */
+        padding: 0;
+      }
 
-    /* 下拉選單內的子連結 */
-    .dropdown-menu a {
-        color: #333333;
-        padding: 12px 15px;
-        text-decoration: none;
-        display: block;
-        font-size: 14px;
-        white-space: normal; /* 允許換行 */
-        transition: background-color 0.2s, color 0.2s;
-        border-bottom: 1px solid #eee; /* 建議加上淡淡的分隔線，區分不同項目 */
+      .dropdown-menu a {
+        padding-left: 20px; /* 稍微往內縮排 */
+        font-size: 14px; /* 子選單字體可以稍微小一點 */
+        background-color: transparent;
+      }
     }
-    .dropdown-menu a:last-child {
-      border-bottom: none;
-    }
-
-
-    /* 當滑鼠移入下拉子項目時 */
-    .dropdown-menu a:hover {
-        background-color: #eaf2f8; /* 淺藍色高亮 */
-        color: #0066cc;
-    }
-
-    /* 核心魔法：滑鼠移入 .dropdown 容器時，顯示下拉選單 */
-    .dropdown:hover .dropdown-menu {
-        display: block;
-    }
-
-    /* 滑鼠懸停時箭頭稍微旋轉（增添視覺質感） */
-    .dropdown:hover .fa-angle-down {
-        transform: rotate(180deg);
-        transition: transform 0.3s;
-    }
-    
-    
