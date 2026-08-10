@@ -43,77 +43,108 @@
     text-align: justify;
   }
 
-  /* 強調色塊：判決結果 */
-  .verdict-box {
-    background-color: #e0f1f7;
-    border-left: 5px solid #2e698e;
-    padding: 20px;
-    margin: 25px 0;
-    border-radius: 0 4px 4px 0;
-  }
-
-  .verdict-box h3 {
-    color: #236887;
-    margin: 0 0 10px 0;
-    font-size: 1.2em;
-  }
-
-  /* 強調色塊：結論 */
-  .conclusion-box {
-    background-color: #fcf8e3;
-    border-left: 5px solid #8a6d3b;
-    padding: 20px;
-    margin: 25px 0;
-    border-radius: 0 4px 4px 0;
-  }
+  .news_text {
+  /* 🌟 核心：段落底部的空白距離，數值越大，段落感越明顯 */
+  margin-bottom: 30px; 
   
-  .conclusion-box h3 {
-    color: #8a6d3b;
-    margin: 0 0 10px 0;
-    font-size: 1.2em;
-  }
+  /* 行高：讓同一段落內的文字不會太擁擠 (截圖中的行距看起來很舒適) */
+  line-height: 1.8; 
+  
+  /* 左右對齊：讓文章左右邊緣像截圖一樣整齊切齊 */
+  text-align: justify;
+  text-justify: inter-ideograph;
+  
+  /* 字體微調 (可選) */
+  color: #333;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  font-weight: bold;
+}
 
-  ul.reason-list {
-    list-style-type: none;
-    padding: 0;
-  }
+/* (可選) 取消最後一段的多餘空白，讓排版更緊湊 */
+.news_text:last-child {
+  margin-bottom: 30px; /* 這裡可以調整為你想要的底部空白距離 */
+}
+  
 
-  ul.reason-list li {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 15px 20px;
-    margin-bottom: 15px;
-    border-radius: 6px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  }
+/* 強調色塊：判決結果 */
+.verdict-box {
+  background-color: #e0f1f7;
+  border-left: 5px solid #2e698e;
+  padding: 20px;
+  margin: 25px 0;
+  border-radius: 0 4px 4px 0;
+}
 
-  ul.reason-list li strong {
-    color: #d9534f;
-    display: block;
-    margin-bottom: 5px;
-    font-size: 1.1em;
-  }
+.verdict-box h3 {
+  color: #236887;
+  margin: 0 0 10px 0;
+  font-size: 1.2em;
+}
 
-  .source-info {
-    margin-top: 40px;
-    padding-top: 15px;
-    border-top: 1px dashed #ccc;
-    font-size: 0.9em;
-    color: #777;
-    background-color: #f9f9f9;
-    padding: 15px;
-    border-radius: 4px;
-  }
+/* 強調色塊：結論 */
+.conclusion-box {
+  background-color: #fcf8e3;
+  border-left: 5px solid #8a6d3b;
+  padding: 20px;
+  margin: 25px 0;
+  border-radius: 0 4px 4px 0;
+}
 
-  .source-info ul {
-    padding-left: 20px;
-    margin-top: 10px;
-  }
+.conclusion-box h3 {
+  color: #8a6d3b;
+  margin: 0 0 10px 0;
+  font-size: 1.2em;
+}
 
-  img.case-photo {
-      max-width: 80%;       /* 讓圖片寬度最多不超過螢幕/容器，確保手機版不會破版 */
-      height: auto;          /* 保持圖片原本的長寬比例不變形 */
-      display: block;        /* 讓圖片獨立佔用一行 */
-      margin: 20px auto 50px;   
-      border-radius: 8px;    /* (可選) 讓圖片四角變成微圓角，看起來比較有質感 */
-    }
+ul.reason-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul.reason-list li {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+ul.reason-list li strong {
+  color: #d9534f;
+  display: block;
+  margin-bottom: 5px;
+  font-size: 1.1em;
+}
+
+.source-info {
+  margin-top: 40px;
+  padding-top: 15px;
+  border-top: 1px dashed #ccc;
+  font-size: 0.9em;
+  color: #777;
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+.source-info ul {
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+img.case-photo {
+    max-width: 80%;       /* 讓圖片寬度最多不超過螢幕/容器，確保手機版不會破版 */
+    height: auto;          /* 保持圖片原本的長寬比例不變形 */
+    display: block;        /* 讓圖片獨立佔用一行 */
+    margin: 20px auto 50px;   
+    border-radius: 8px;    /* (可選) 讓圖片四角變成微圓角，看起來比較有質感 */
+  }
+    /* 文章分隔線樣式 */
+  .article-divider {
+    border: none;                     /* 先清除瀏覽器預設的線條樣式 */
+    border-top: 2px dashed #d9cfc4;   /* 設定上方框線：2px粗、虛線、淺卡其色(與您原本的設計呼應) */
+    margin: 60px 0;                   /* 🌟 核心：上下各空出 60px 的大距離，左右不留白 */
+    width: 100%;                      /* 確保線條寬度滿版 */
+  }
