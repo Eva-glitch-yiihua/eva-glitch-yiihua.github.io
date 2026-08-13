@@ -370,4 +370,13 @@
         font-size: 14px; /* 子選單字體可以稍微小一點 */
         background-color: transparent;
       }
-    }
+    
+      .container {
+        grid-template-columns: 1fr; /* 將原本的左右兩欄改為一欄 */
+      }
+
+      .sidebar-title {
+        text-align: center; /* 讓內部文字置中 */
+        margin-bottom: 15px;
+      }
+  }
