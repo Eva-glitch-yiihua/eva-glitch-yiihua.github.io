@@ -14,6 +14,7 @@
     body {
       background-color: #fdfaf7;
       color: #333; 
+
     }
 
     /* 1. 頂部導覽列 (Header) */
@@ -375,7 +376,7 @@
       }
 
       .sidebar-title {
-        text-align: center; /* 讓內部文字置中 */
+        text-align: center; 
         margin-bottom: 15px;
       }
       .notary-section {
