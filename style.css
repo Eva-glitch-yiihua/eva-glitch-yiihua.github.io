@@ -109,25 +109,25 @@
       margin: 10px auto 60px;
       padding: 0 20px;
       display: grid;
-      grid-template-columns: 280px 1fr;
+      flex-direction: column;
       gap: 30px;
     }
 
     /* 左側邊欄 Sidebar */
-    .sidebar-title {
+    /* .sidebar-title {
       font-size: 20px;
       font-weight: normal;
       color: #444;
       margin-bottom: 20px;
-    }
-
+    } */
+/* 
     .sidebar-title span {
       font-family: serif;
       font-style: italic;
       color: #777;
     }
 
-  
+   */
 
     .category-list {
       list-style: none;
@@ -378,5 +378,11 @@
       .sidebar-title {
         text-align: center; /* 讓內部文字置中 */
         margin-bottom: 15px;
+      }
+      .notary-section {
+        grid-template-columns: 1fr;
+      }
+      .notary-card {
+        padding: 25px 20px;
       }
   }
