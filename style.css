@@ -300,7 +300,28 @@
         transform: rotate(180deg);
         transition: transform 0.3s;
     }
-    
+
+    /* 確保父元素可以作為絕對定位的基準 */
+    .floating-socials {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    /* QR Code 預設隱藏與樣式設定 */
+    .qrcode-img {
+      display: none; /* 預設隱藏 */
+      width: 120px;  /* 可依需求調整大小 */
+      height: 120px;
+      margin-bottom: 10px; /* 與按鈕保持一點距離 */
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* 加上一點陰影比較好看 */
+    }
+        
         /* 響應式調整 (Mobile Adaptive) */
     @media (max-width: 768px) {
       header { 

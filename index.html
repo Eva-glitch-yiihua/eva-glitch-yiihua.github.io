@@ -177,14 +177,6 @@
 
   </main>
 
-  <!-- 4. 右下角懸浮按鈕區塊 -->
-  <!-- <div class="floating-socials">
-    <a href="#" class="social-btn btn-fb"><i class="fa-brands fa-facebook-f"></i></a>
-    <a href="#" class="social-btn btn-line"><i class="fa-brands fa-line"></i></a>
-    <a href="#" class="social-btn btn-phone"><i class="fa-solid fa-phone"></i></a>
-    <a href="#" class="social-btn btn-msg"><i class="fa-brands fa-facebook-messenger"></i></a>
-  </div> -->
-
   <div id="footer-container"></div>
  
   <script>
@@ -209,9 +201,21 @@
         .then(response => response.text())
         .then(data => {
           document.getElementById('footer-container').innerHTML = data;
+          
+        // 取得按鈕與 QR Code 圖片的 DOM 元素
+        const lineBtn = document.getElementById('line-btn');
+        const lineQrCode = document.getElementById('line-qrcode');
+
+        // 當滑鼠移入按鈕時，顯示 QR Code
+        lineBtn.addEventListener('mouseenter', function() {
+          lineQrCode.style.display = 'block';
         });
 
-      
+        // 當滑鼠移出按鈕時，隱藏 QR Code
+        lineBtn.addEventListener('mouseleave', function() {
+          lineQrCode.style.display = 'none' ;
+        });
+        });
 
     </script>
 </body>
