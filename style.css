@@ -316,7 +316,7 @@
 /* 2. 更新 QR Code 的 CSS 樣式 (關鍵！) */
 #line-qrcode {
   display: none; /* 預設隱藏 */
-  width: 250px;  /* 我已經幫你加大圖片，可以依需求微調 */
+  width: 250px;  /* 圖片寬度 */
   height: 250px;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
